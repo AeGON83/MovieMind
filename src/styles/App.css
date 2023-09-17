@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('./Navbar.css');
+
+:root{
+  --primary-background-color:#0a0025;
+  --primary-font-color-1:white;
+  --primary-font-color-2:#b745e0;
+  --primary-font-color-3:#abff5c;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: var(--primary-font-color-1);
+  box-sizing: border-box;
+}
+
+body{
+  background-color: var(--primary-background-color);
+  width:100dvw;
+  position: relative;
+}
