@@ -1,0 +1,178 @@
+.searchbar-container {
+  width: 90%;
+  height: 600px;
+  background-image: url(../assets/home-page-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 10%;
+  border-top-right-radius: 400px;
+  border-bottom-right-radius: 400px;
+}
+
+.searchbar-title-container {
+  position: relative;
+  top: 4%;
+}
+
+.searchbar-title-container > p {
+  width: 300px;
+  text-wrap: balance;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--primary-background-color);
+  margin-left: 4%;
+  font-family: "Oswald", sans-serif;
+}
+
+/* 
+SearchBar.css
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 500px;
+    background-color: var(--primary-background-color);
+    position: relative;
+    top:8%;
+    left: 4%;
+}
+
+.search-input {
+    color: black;
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: var(--primary-background-color);
+  }
+  
+  .search-button{
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    font-size: 25px;
+    background-color: var(--primary-background-color);
+  }
+   */
+
+.search-bar {
+  position: relative;
+  top: 16%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar-form {
+  margin-left: 4%;
+  margin-right: 4%;
+  height: 60px;
+  position: relative;
+  width: 100%;
+  background: var(--primary-background-color);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 20px;
+}
+
+.search-bar-form input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  padding: 18px 14zpx;
+  font-size: 20px;
+  color: inherit;
+  backdrop-filter: blur(4px) saturate(110%);
+}
+
+::placeholder {
+  color: inherit;
+}
+
+.search-bar-form > button {
+  width: 150px;
+  border-color: var(--primary-font-color-3);
+  color: var(--primary-font-color-1);
+  background-color: var(--primary-font-color-3);
+}
+.search-bar-form > button:hover {
+  width: 150px;
+  border-color: var(--primary-font-color-3);
+  color: var(--primary-font-color-1);
+  background-color: var(--primary-font-color-4);
+}
+
+/* menu button */
+.search-bar-switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 28px;
+  scale: 0.65;
+}
+
+/* Hide default HTML checkbox */
+.search-bar-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: darkgreen;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 28px;
+  background-color: yellowgreen;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.search-bar-switch input:checked + .slider {
+  background-color: darkred;
+}
+
+.search-bar-switch input:focus + .slider {
+  box-shadow: 0 0 1px darkred;
+}
+
+.search-bar-switch input:checked + .slider:before {
+  background-color: rgb(217, 0, 0);
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.search-bar-form > label:nth-child(3) {
+  margin-right: 20px;
+}
