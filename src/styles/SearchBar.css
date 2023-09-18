@@ -1,6 +1,8 @@
 .searchbar-container {
+  display: block;
   width: 90%;
-  height: 600px;
+  height: 550px;
+  margin-top: 2%;
   background-image: url(../assets/home-page-2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -15,56 +17,30 @@
 }
 
 .searchbar-title-container > p {
-  width: 300px;
+  width: 900px;
   text-wrap: balance;
   font-size: 30px;
+  line-height: 1.5;
   font-weight: 500;
   color: var(--primary-background-color);
   margin-left: 4%;
   font-family: "Oswald", sans-serif;
 }
 
-/* 
-SearchBar.css
-.search-bar {
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 500px;
-    background-color: var(--primary-background-color);
-    position: relative;
-    top:8%;
-    left: 4%;
+.searchbar-title-container > p:nth-child(1) {
+  color: red;
+  font-size: 3.5rem;
 }
-
-.search-input {
-    color: black;
-    flex: 1;
-    padding: 15px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    background-color: var(--primary-background-color);
-  }
-  
-  .search-button{
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s;
-    font-size: 25px;
-    background-color: var(--primary-background-color);
-  }
-   */
+.searchbar-title-container > p:nth-child(2) {
+  color: var(--primary-background-color);
+  font-size: 2.5rem;
+}
 
 .search-bar {
   position: relative;
   top: 16%;
   width: 90%;
-  display: flex;
+  display: flexbox;
   align-items: center;
   justify-content: center;
 }
@@ -75,11 +51,12 @@ SearchBar.css
   height: 60px;
   position: relative;
   width: 100%;
-  background: var(--primary-background-color);
+  background: rgba(155, 155, 155, 0.6);
   display: flex;
   align-items: center;
   border-radius: 60px;
   padding: 20px;
+  border: 2px solid var(--primary-font-color-4);
 }
 
 .search-bar-form input {
@@ -89,12 +66,12 @@ SearchBar.css
   outline: 0;
   padding: 18px 14zpx;
   font-size: 20px;
-  color: inherit;
   backdrop-filter: blur(4px) saturate(110%);
 }
 
 ::placeholder {
-  color: inherit;
+  color: var(--primary-font-color-4);
+  font-weight: 500;
 }
 
 .search-bar-form > button {
@@ -110,7 +87,6 @@ SearchBar.css
   background-color: var(--primary-font-color-4);
 }
 
-/* menu button */
 .search-bar-switch {
   position: relative;
   display: inline-block;
@@ -119,14 +95,12 @@ SearchBar.css
   scale: 0.65;
 }
 
-/* Hide default HTML checkbox */
 .search-bar-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -164,7 +138,6 @@ SearchBar.css
   transform: translateX(25px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -175,4 +148,37 @@ SearchBar.css
 
 .search-bar-form > label:nth-child(3) {
   margin-right: 20px;
+}
+
+.badges-container {
+  align-self: center;
+  position: relative;
+  top: 22%;
+  margin: 0 auto;
+  height: fit-content;
+  width: 50% !important ;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge {
+  cursor: pointer;
+  display: inline;
+  margin: 10px;
+  padding: 6px 12px;
+  border-radius: 80px;
+  font-weight: 500;
+  width: fit-content;
+  height: min-content;
+  transition: 0.3s ease-in-out;
+}
+.badge:hover {
+  scale: 1.1;
+}
+
+.badge > span {
+  color: inherit;
 }
