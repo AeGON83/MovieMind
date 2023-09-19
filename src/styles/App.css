@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto:wght@400;500&display=swap");
 @import url("./Navbar.css");
 @import url("./SearchBar.css");
+@import url("./CategoryBar.css");
 
 :root {
   --primary-background-color: #0a0025;
-  --primary-font-color-1: white;
+  --primary-font-color-1: #ffffff;
   --primary-font-color-2: #b745e0;
   /* --primary-font-color-3:#abff5c; */
   --primary-font-color-3: darkred;
-  --primary-font-color-4: rgb(207, 20, 20);
+  --primary-font-color-4: #cf1414;
 }
 
 html {
@@ -26,12 +27,16 @@ html {
 
 body {
   background-color: var(--primary-background-color);
-  width: 100dvw;
+  width: 100%;
   position: relative;
 }
 
 a {
   text-decoration: none;
+}
+
+.homepage-first-screen {
+  height: 100vh;
 }
 
 .normal-button {

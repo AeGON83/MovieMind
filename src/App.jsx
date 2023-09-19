@@ -1,12 +1,16 @@
 import "./styles/App.css";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
+import CategoryBar from "./components/CategoryBar";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <SearchBar />
+      <div className="homepage-first-screen">
+        <Navbar />
+        <SearchBar />
+        <CategoryBar />
+      </div>
     </>
   );
 }
