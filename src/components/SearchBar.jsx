@@ -40,7 +40,11 @@ export default function SearchBar() {
         <p>The gateway to your Cinematic Experience!</p>
       </div>
       <div className="search-bar">
-        <form action="" className="search-bar-form">
+        <form
+          action=""
+          onSubmit={(e) => e.preventDefault()}
+          className="search-bar-form"
+        >
           <input
             autoComplete="off"
             type="text"

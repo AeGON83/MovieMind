@@ -2,6 +2,7 @@
 @import url("./Navbar.css");
 @import url("./SearchBar.css");
 @import url("./CategoryBar.css");
+@import url("./SignInPage.css");
 
 :root {
   --primary-background-color: #0a0025;
