@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function CategoryBox({ autoPlay, loop, playInline }) {
+export default function CategoryBox({ src }) {
   return (
     <div className="category-box">
-      <img></img>
-      <video autoPlay={autoPlay} loop={loop} playsInline={playInline}>
-        <source type="video/mp4" />
+      <img src={src.img}></img>
+      <video autoPlay={true} loop={true} playsInline={true}>
+        <source src={src.vid} type="video/mp4" />
       </video>
     </div>
   );

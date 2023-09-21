@@ -174,6 +174,15 @@
   width: fit-content;
   height: min-content;
   transition: 0.3s ease-in-out;
+  background-color: rgb(24, 6, 76);
+  background-image: radial-gradient(
+    90.68% 92.96% at 9.32% 7.04%,
+    rgb(24, 6, 76, 0) 0%,
+    rgb(24, 6, 76, 0.68) 40.97%,
+    rgb(24, 6, 76, 0.8) 51.93%,
+    rgb(24, 6, 76, 0.95) 77.75%,
+    rgb(24, 6, 76, 0.95) 100%
+  );
 }
 .badge:hover {
   scale: 1.1;

@@ -19,12 +19,12 @@ export default function SearchBar() {
     "All",
   ];
   const badgeColorList = [
-    { dark: "#006400b3", light: "greenyellow" },
-    { dark: "#8b0000b3", light: "red" },
-    { dark: "#008b8bb3", light: "cyan" },
-    { dark: "#2f4f4fb3", light: "lightgrey" },
-    { dark: "#b8870bb3", light: "gold" },
-    { dark: "#9932ccb3", light: "pink" },
+    "greenyellow",
+    "red",
+    "cyan",
+    "lightgrey",
+    "gold",
+    "pink",
   ];
   const makeBadgeColor = (index) => {
     return badgeColorList[index % badgeColorList.length];
