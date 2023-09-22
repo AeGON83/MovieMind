@@ -72,11 +72,3 @@
 .category-box:hover video {
   opacity: 1;
 }
-
-.catagory-bar-btn {
-  height: 135px !important;
-  width: 80px;
-  border-radius: 100%;
-  text-align: center;
-  display: inline-block;
-}

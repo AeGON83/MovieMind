@@ -49,8 +49,9 @@ export default function SearchBar() {
             autoComplete="off"
             type="text"
             placeholder="Search Movies/TV Shows"
-            name="q"
-          ></input>
+            className="homepage-search-bar"
+            // name="q"
+          />
           <label className="search-bar-switch">
             <input
               type="checkbox"
