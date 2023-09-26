@@ -11,8 +11,7 @@ export default function Navbar() {
                 <li>Favorites</li>
             </ul>
             <div className="navbar-buttons-wrapper">
-            <button className='normal-button' id='login-button'>Log In</button>
-            <button className='normal-button' id='signin-button'>Sign In</button>
+            <button className='normal-button' id='signin-button'>Account</button>
             </div>
         </div>
     </div>

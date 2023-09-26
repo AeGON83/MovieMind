@@ -8,6 +8,9 @@
   background-size: cover;
 }
 
+.googleButton{
+  scale: 0.6;
+}
 .signin-page-main {
   transform: translate(-50%, -50%);
   left: 50%;
@@ -68,7 +71,7 @@
   height: 100%;
 }
 
-.lable-text {
+.label-text {
   font-size: 0.75rem;
   color: var(--primary-font-color-4);
   font-weight: 700;
@@ -150,6 +153,8 @@
   z-index: 0;
 }
 
+.logo{width: 100px;
+height: 100px;}
 .signin-switch {
   display: flex;
   justify-content: center;
