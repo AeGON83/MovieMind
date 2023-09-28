@@ -11,8 +11,8 @@ export default function SearchBar() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YWZiMmU4NWMyMGFiZjE4N2E3ZjExYzMzZjg3ZjdhZSIsInN1YiI6IjY1MTNiYjM0ZWE4NGM3MDE0ZWY5OWE0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3GRTSbPgz-69Er0gA4Mgx8QOkucmrxqQdmO6FmZbr7s",
+      Authorization: process.env.REACT_APP_TMDB_API_KEY,
+      // "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YWZiMmU4NWMyMGFiZjE4N2E3ZjExYzMzZjg3ZjdhZSIsInN1YiI6IjY1MTNiYjM0ZWE4NGM3MDE0ZWY5OWE0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3GRTSbPgz-69Er0gA4Mgx8QOkucmrxqQdmO6FmZbr7s",
     },
   };
   useEffect(() => {
@@ -129,7 +129,7 @@ export default function SearchBar() {
                           ? item.first_air_date
                           : "" + item.release_date
                           ? item.release_date
-                          : ""}
+                          : "" + item}
                         {"  •  "}
                         {item.media_type}
                       </p>

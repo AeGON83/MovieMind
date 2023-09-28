@@ -64,8 +64,6 @@
 }
 
 .search-bar-form-focus {
-  /* border: none; */
-
   border-radius: 20px 20px 0 0;
 }
 
@@ -76,6 +74,8 @@
   outline: 0;
   padding: 18px 14zpx;
   font-size: 20px;
+  color: var(--primary-font-color-4);
+  font-weight: 500;
 }
 
 ::placeholder {
@@ -251,11 +251,12 @@
 
 .search-auto-complete-container li img {
   background-image: url(../assets/image-not-found.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   height: 100%;
   width: 45px;
-  /* border-radius: ; */
   object-fit: cover;
-  /* border-radius: 5px; */
   margin-right: 10px;
 }
 
