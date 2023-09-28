@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import Badge from "./Badge";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar() {
   const [toggleSearchType, setToggleSearchType] = useState(true);
@@ -12,7 +10,6 @@ export default function SearchBar() {
     headers: {
       accept: "application/json",
       Authorization: process.env.REACT_APP_TMDB_API_KEY,
-      // "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YWZiMmU4NWMyMGFiZjE4N2E3ZjExYzMzZjg3ZjdhZSIsInN1YiI6IjY1MTNiYjM0ZWE4NGM3MDE0ZWY5OWE0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3GRTSbPgz-69Er0gA4Mgx8QOkucmrxqQdmO6FmZbr7s",
     },
   };
   useEffect(() => {
