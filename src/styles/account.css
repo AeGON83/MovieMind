@@ -1,19 +1,25 @@
-.card {
+.account-card-container {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 20px;
-  margin-bottom: 20px;
+  background-color: grey;
+  width: 92%;
+  height: 70vh;
+  margin-left: 4%;
 }
 
-.card-body {
+.account-card {
   padding: 20px;
+}
+
+.account-email {
 }
 
 .text-center {
   text-align: center;
 }
 
-.btn {
+.account-btn-link {
   display: inline-block;
   padding: 10px 20px;
   color: #fff;
@@ -21,11 +27,6 @@
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
-}
-
-.btn-link {
-  color: #007bff;
-  text-decoration: none;
 }
 
 .alert {
