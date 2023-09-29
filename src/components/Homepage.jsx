@@ -15,7 +15,19 @@ export default function () {
         <SearchBar />
         <CategoryBar />
         {/* <Account /> */}
-        <MovieCard />
+        <div id="temp">
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+        </div>
       </div>
     </>
   );

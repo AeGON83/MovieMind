@@ -22,7 +22,7 @@ export default function Navbar() {
             {currentUser ? (
               <Link to="/account">Account</Link>
             ) : (
-              <Link to="/signup">SignIn</Link>
+              <Link to="/signup">Sign In</Link>
             )}
           </button>
         </div>

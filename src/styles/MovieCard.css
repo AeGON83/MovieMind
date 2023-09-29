@@ -3,11 +3,14 @@
   height: 300px;
   background: transparent;
   position: relative;
+  background-color: red;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
     rgb(0 0 0/73%) 0px 16px 10px -10px;
+  display: inline-block;
+  margin: 10px;
 }
 .movie-card-left {
   width: 250px;
@@ -15,7 +18,8 @@
   float: left;
   background: transparent;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  transition: 0.5s 0 ease-in-out;
 }
 .movie-card-left img {
   width: 100%;
@@ -25,18 +29,25 @@
   transition: 0.5s ease-in-out;
 }
 
+.movie-card-left:hover {
+  z-index: 11;
+}
+
 .movie-card-left:hover img {
   -webkit-border-radius: 10px 0 0 10px;
   -moz-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
 }
-.movie-card-left:hover > .movie-card-right {
+/* .movie-card-left:hover > .movie-card-right {
   opacity: 1;
   transform: translate(250px, 0);
   width: 325px;
-}
+} */
 .movie-card-right {
-  transition: all 0.5s ease-in-out;
+  /* transition: z-index 0s ease-in-out; */
+  transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out,
+    transform 0.5s ease-in-out, 0.5s 0.5s z-index ease-in-out;
+  transition-delay: 0.1s;
   opacity: 0;
   width: 250px;
   height: 100%;
@@ -45,10 +56,16 @@
   position: absolute;
   top: 0;
   border-radius: 0 10px 10px 0;
-  transform: translate(-100%, 0);
+  /* transform: translate(-250px, 0); */
   -webkit-border-radius: 0 10px 10px 0;
   -moz-border-radius: 0 10px 10px 0;
   z-index: -1;
+}
+.show-card-details {
+  opacity: 1;
+  transform: translate(250px, 0);
+  width: 325px;
+  z-index: 10;
 }
 .movie-card-right h1 {
   color: white;
