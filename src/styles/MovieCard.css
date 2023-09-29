@@ -19,7 +19,7 @@
   background: transparent;
   position: relative;
   z-index: 1;
-  transition: 0.5s 0 ease-in-out;
+  transition: 0.5s 0s ease-out;
 }
 .movie-card-left img {
   width: 100%;
@@ -38,15 +38,9 @@
   -moz-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
 }
-/* .movie-card-left:hover > .movie-card-right {
-  opacity: 1;
-  transform: translate(250px, 0);
-  width: 325px;
-} */
 .movie-card-right {
-  /* transition: z-index 0s ease-in-out; */
-  transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out,
-    transform 0.5s ease-in-out, 0.5s 0.5s z-index ease-in-out;
+  /* transition: opacity 0.5s ease-in, width 0.5s ease-in, transform 0.5s ease-in,
+    0.5s z-index ease-in; */
   transition-delay: 0.1s;
   opacity: 0;
   width: 250px;
@@ -56,7 +50,6 @@
   position: absolute;
   top: 0;
   border-radius: 0 10px 10px 0;
-  /* transform: translate(-250px, 0); */
   -webkit-border-radius: 0 10px 10px 0;
   -moz-border-radius: 0 10px 10px 0;
   z-index: -1;
@@ -66,6 +59,7 @@
   transform: translate(250px, 0);
   width: 325px;
   z-index: 10;
+  transition: 0.5s ease-in;
 }
 .movie-card-right h1 {
   color: white;
