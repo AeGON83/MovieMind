@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import MediaBackground from "./MediaBackground";
 import CardSlider from "./CardSlider";
 
-export default function PosterSection(props) {
-  const { url, title } = props;
-
+export default function PosterSection({ url, title }) {
   const [posterSectionList, setPosterSectionList] = useState({});
 
   const apiReqOptions = {
@@ -30,9 +28,7 @@ export default function PosterSection(props) {
       <div className="poster-section-title">{title}</div>
 
       {posterSectionList.results ? (
-        <MediaBackground
-          backdrop={posterSectionList.results[0].backdrop_path}
-        />
+        <MediaBackground id={posterSectionList.results[0].id} />
       ) : (
         ""
       )}

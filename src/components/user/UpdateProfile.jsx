@@ -1,90 +1,120 @@
-/** @format */
-
 import React, { useRef, useState } from "react";
 import { useAuth } from "./AuthContext";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function UpdateProfile() {
-	const emailRef = useRef();
-	const passwordRef = useRef();
-	const passwordConfirmRef = useRef();
-	const { currentUser, updatePassword, updateEmail } = useAuth();
-	const [error, setError] = useState("");
-	const [loading, setLoading] = useState(false);
-	const Navigate = useNavigate()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const currentPasswordRef = useRef();
+  const { currentUser, updatePassword, updateEmail } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const Navigate = useNavigate();
 
-	function handleSubmit(e) {
-		 e.preventDefault();
-			if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-				return setError("Passwords do not match");
-			}
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(
+      "Current password:",
+      currentPasswordRef.current.value,
+      typeof currentPasswordRef.current.value
+    );
+    console.log(
+      "New password:",
+      passwordRef.current.value,
+      typeof passwordRef.current.value
+    );
 
-			const promises = [];
-			setLoading(true);
-			setError("");
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
 
-			if (emailRef.current.value !== currentUser.email) {
-				promises.push(updateEmail(emailRef.current.value));
-			}
-			if (passwordRef.current.value) {
-				promises.push(updatePassword(passwordRef.current.value));
-			}
+    const promises = [];
+    setLoading(true);
+    setError("");
 
-			Promise.all(promises)
-				.then(() => {
-					Navigate("/");
-				})
-				.catch(() => {
-					setError("Failed to update account");
-				})
-				.finally(() => {
-					setLoading(false);
-				});
-	}
+    if (emailRef.current.value !== currentUser.email) {
+      promises.push(updateEmail(emailRef.current.value));
+    }
+    if (currentPasswordRef.current.value) {
+      promises.push(
+        updatePassword(
+          currentPasswordRef.current.value,
+          passwordRef.current.value
+        )
+      );
+    }
 
-	return (
-		<div className='card'>
-			<div className='card-body'>
-				<h2 className='text-center mb-4'>Update Profile</h2>
-				{error && <div className='alert'>{error}</div>}
-				<form onSubmit={handleSubmit}>
-					<div id='email'>
-						<label>Email</label>
-						<input
-							type='email'
-							ref={emailRef}
-							required
-							defaultValue={currentUser.email}
-						/>
-					</div>
-					<div id='password'>
-						<label>Password</label>
-						<input
-							type='password'
-							ref={passwordRef}
-							placeholder='Leave blank to keep the same'
-						/>
-					</div>
-					<div id='password-confirm'>
-						<label>Password Confirmation</label>
-						<input
-							type='password'
-							ref={passwordConfirmRef}
-							placeholder='Leave blank to keep the same'
-						/>
-					</div>
-					<button
-						disabled={loading}
-						className='w-100'
-						type='submit'
-					>
-						Update
-					</button>
-				</form>
-			</div>
-			<div className='w-100 text-center mt-2'>
-				<Link to='/'>Cancel</Link>
-			</div>
-		</div>
-	);
+    Promise.all(promises)
+      .then(() => {
+        Navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Failed to update account");
+      })
+
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  return (
+    <div className="signin-page-container">
+      <div className="signin-page-main">
+        <h2 className="form_title title">Update Profile</h2>
+        <div className="w-100 text-center mt-2">
+          <Link to="/">Cancel</Link>
+        </div>
+
+        <div className={`error-alert ${error == "" ? "" : "show-erorr-alert"}`}>
+          {error}
+        </div>
+
+        <form className="signin-form" onSubmit={handleSubmit}>
+          <label className="label-text">Email</label>
+          <input
+            className="form__input"
+            type="email"
+            ref={emailRef}
+            required
+            defaultValue={currentUser.email}
+          />
+
+          <label className="label-text">Current Password</label>
+          <input
+            className="form__input"
+            type="password"
+            ref={currentPasswordRef}
+            placeholder="Enter your current password"
+            required
+          />
+
+          <label className="label-text">Password</label>
+          <input
+            className="form__input"
+            type="password"
+            ref={passwordRef}
+            placeholder="Leave blank to keep the same"
+          />
+
+          <label className="label-text">Password Confirmation</label>
+          <input
+            className="form__input"
+            type="password"
+            ref={passwordConfirmRef}
+            placeholder="Leave blank to keep the same"
+          />
+
+          <button
+            disabled={loading}
+            className="form__button signin-button submit"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }

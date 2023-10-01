@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { useAuth } from "../user/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,17 +19,22 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="account-card-container">
-      <div className="acoount-card">
-        <h2 className="">Profile</h2>
+    <div className="signin-page-container">
+      <div className="signin-page-main">
+        <h2 className="form_title title">Profile</h2>
         {error && <div className="alert">{error}</div>}
         <p className="account-email">{currentUser.email}</p>
-        <Link to="/update-profile" className="account-btn-link">
+        <Link
+          to="/update-profile"
+          className="form__button signin-button submit"
+        >
           Update Profile
         </Link>
-      </div>
-      <div className="">
-        <button className="account-btn-link" onClick={handleLogout}>
+
+        <button
+          className="form__button signin-button submit"
+          onClick={handleLogout}
+        >
           Log Out
         </button>
       </div>

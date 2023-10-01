@@ -59,7 +59,9 @@ export default function MediaPage() {
             <img
               className="backdrop-img"
               src={`https://image.tmdb.org/t/p/original${
-                mediaData.backdrop_path || "b3JtLWrdiJFCN8r9zuftgty8ddD.jpg"
+                mediaData.backdrop_path
+                  ? mediaData.backdrop_path
+                  : "/b3JtLWrdiJFCN8r9zuftgty8ddD.jpg"
               }`}
               alt="err getting image"
             />
