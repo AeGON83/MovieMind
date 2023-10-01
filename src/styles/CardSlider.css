@@ -1,0 +1,45 @@
+.movie-cards-container {
+	display: flex;
+	overflow-x: hidden;
+	width: 100%;
+	align-items: center;
+	transition: 0.3s ease;
+	z-index: 1;
+	
+	height: 37%;
+}
+
+/* Rest of the CSS code remains the same */
+
+/* Add these styles to your CSS for the buttons */
+.movie-card-slider-button {
+	background-color: white;
+	border: none;
+	border-radius: 50%; /* Makes the button round */
+	color: #333; /* Text color */
+	font-size: 24px; /* Adjust the font size as needed */
+	width: 35px; /* Adjust the width as needed */
+	height: 35px; /* Adjust the height as needed */
+	cursor: pointer;
+	transition: background-color 0.3s ease; /* Smooth hover effect for background color */
+	position: absolute;
+	z-index: 12;
+}
+
+.movie-card-slider-button:hover {
+	background-color: #ddd; /* Change background color on hover */
+}
+
+/* Style the left button */
+.movie-card-slider-button.left-btn {
+	margin-right: 10px; /* Add some spacing between the buttons */
+}
+
+/* Style the right button */
+.movie-card-slider-button.right-btn {
+	margin-left: 10px; /* Add some spacing between the buttons */
+}
+
+.right-btn {
+	right: 0;
+}

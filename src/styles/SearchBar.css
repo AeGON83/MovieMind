@@ -206,7 +206,7 @@
 
 .search-auto-complete-container {
   position: absolute;
-  width: calc(100% + 2px);
+  width: calc(100% + 1px);
   max-height: 240px;
   overflow-y: scroll;
   background-color: var(--primary-background-color);
@@ -249,6 +249,9 @@
   cursor: pointer;
 }
 
+.search-auto-complete-container::-webkit-scrollbar-track {
+  background: transparent;
+}
 .search-auto-complete-container li img {
   background-image: url(../assets/image-not-found.svg);
   background-repeat: no-repeat;

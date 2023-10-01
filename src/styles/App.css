@@ -5,6 +5,12 @@
 @import url("./SignInPage.css");
 @import url("./Account.css");
 @import url("./MovieCard.css");
+@import url("./MediaPage.css");
+@import url("./Loading.css");
+@import url("./ImageSlider.css");
+@import url("./PosterSection.css");
+@import url("./CardSlider.css");
+@import url("./MediaBackground.css");
 
 :root {
   --primary-background-color: #0a0025;

@@ -1,33 +1,28 @@
-/** @format */
-
 import React from "react";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
-import Account from "./user/Account";
-import MovieCard from "./MovieCard";
+import PosterSection from "./PosterSection";
 
 export default function () {
+  const sections = [
+    { url: "movie/now_playing", title: "popular" },
+    { url: "movie/top_rated", title: "top_rated" },
+    { url: "movie/upcoming", title: "upcoming" },
+    { url: "tv/top_rated", title: "top_rated" },
+    { url: "movie/popular", title: "popular" },
+  ];
+
   return (
     <>
       <div className="homepage-first-screen">
         <Navbar />
         <SearchBar />
         <CategoryBar />
-        {/* <Account /> */}
-        <div id="temp">
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-        </div>
+
+        {sections.map((section, index) => (
+          <PosterSection key={index} url={section.url} title={section.title} />
+        ))}
       </div>
     </>
   );

@@ -1,0 +1,195 @@
+.media-page {
+  width: 100%;
+  position: relative;
+}
+
+.media-details {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right;
+}
+
+.backdrop-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center;  */
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  gap: 20px;
+  top: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  z-index: 0;
+  padding-left: 5%;
+}
+
+.media-rating-list {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  gap: 25px;
+  font-size: 15px;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+.media-rating-list li:first-child {
+  display: flex;
+  list-style-type: none;
+  gap: 4px;
+}
+
+.star-icon {
+  background: url(../assets/icons/rate-star-icon.png);
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.media-logo {
+  height: 150px;
+  object-fit: contain;
+  object-position: left;
+}
+
+.media-logo-alt {
+  max-height: 3em;
+  width: 80%;
+  font-size: 50px;
+  font-family: "Oswald", sans-serif;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.media-tagline {
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 2px;
+}
+.media-genere-list {
+  gap: 10px;
+}
+.media-genere-list .badge {
+  margin: 0;
+}
+
+.media-overview {
+  width: 70%;
+  font-size: 15px;
+}
+
+.media-page-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.media-page-play-btn {
+  display: flex;
+  width: 130px;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  background: linear-gradient(338deg, #d5e30c, #e30c76, #e30c0c);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 6s ease infinite;
+  -moz-animation: AnimationName 6s ease infinite;
+  -o-animation: AnimationName 6s ease infinite;
+  animation: AnimationName 6s ease infinite;
+}
+
+.media-page-play-btn:hover {
+  animation: none;
+  background: none;
+}
+
+.bookmark-btn {
+  background: url(../assets/icons/bookmark-empty.svg);
+}
+.bookmark-btn:hover {
+  background: url(../assets/icons/bookmark-filled.svg);
+}
+
+.heart-btn {
+  background: url(../assets/icons/heart-empty.svg);
+}
+
+.heart-btn:hover {
+  background: url(../assets/icons/heart-filled.svg);
+  scale: 1.1;
+}
+.icon-button {
+  width: 40px;
+  height: 40px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 13% 0%;
+  }
+  50% {
+    background-position: 88% 100%;
+  }
+  100% {
+    background-position: 13% 0%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 13% 0%;
+  }
+  50% {
+    background-position: 88% 100%;
+  }
+  100% {
+    background-position: 13% 0%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 13% 0%;
+  }
+  50% {
+    background-position: 88% 100%;
+  }
+  100% {
+    background-position: 13% 0%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 13% 0%;
+  }
+  50% {
+    background-position: 88% 100%;
+  }
+  100% {
+    background-position: 13% 0%;
+  }
+}

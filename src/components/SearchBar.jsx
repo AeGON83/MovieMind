@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import Badge from "./Badge";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
   const [toggleSearchType, setToggleSearchType] = useState(true);
   const [searchAutocompleteList, setSearchAutocompleteList] = useState({});
   const [queryString, setQueryString] = useState("");
+  const [selectedMedia, setSelectedMedia] = useState({
+    id: "",
+    showSuggestions: queryString ? true : false,
+  });
+  const navigate = useNavigate();
+
   const apiReqOptions = {
     method: "GET",
     headers: {
@@ -52,9 +59,13 @@ export default function SearchBar() {
   ];
   const makeBadgeColor = (index) => {
     return badgeColorList[index % badgeColorList.length];
-    // return badgeColorList[
-    //   Math.floor(Math.random() * (badgeColorList.length - 1))
-    // ];
+  };
+  const searchMedia = () => {
+    // window.alert(selectedMedia.id);
+    if (selectedMedia.id == "") {
+      return;
+    }
+    navigate(`/movie/${selectedMedia.id}`);
   };
 
   return (
@@ -68,7 +79,7 @@ export default function SearchBar() {
           action=""
           onSubmit={(e) => e.preventDefault()}
           className={`search-bar-form ${
-            queryString ? "search-bar-form-focus" : ""
+            selectedMedia.showSuggestions ? "search-bar-form-focus" : ""
           }`}
         >
           <input
@@ -77,7 +88,13 @@ export default function SearchBar() {
             placeholder="Search Movies/TV Shows"
             className="homepage-search-bar"
             value={queryString}
-            onChange={handleSearchChange}
+            onChange={(e) => {
+              handleSearchChange(e);
+              setSelectedMedia({
+                id: "",
+                showSuggestions: true,
+              });
+            }}
             // name="q"
           />
           <label className="search-bar-switch">
@@ -88,56 +105,70 @@ export default function SearchBar() {
             />
             <span className="slider round"></span>
           </label>
-          <button type="submit" className="search-bar-btn normal-button">
+          <button
+            type="submit"
+            className="search-bar-btn normal-button"
+            onClick={searchMedia}
+          >
             {toggleSearchType ? "AI " : "Normal "}Search
           </button>
-          <ul
-            className={`search-auto-complete-container ${
-              searchAutocompleteList.results ? "show-suggestions" : ""
-            }`}
-          >
-            {searchAutocompleteList.results ? (
-              searchAutocompleteList.results.map((item) => {
-                return (
-                  <li>
-                    <img
-                      src={`https://image.tmdb.org/t/p/w200/${
-                        item.poster_path
-                          ? item.poster_path
-                          : item.backdrop_path + item.profile_path
-                          ? item.profile_path
-                          : ""
-                      }`}
-                    />
-                    <div>
-                      <p>
-                        {item.title
-                          ? item.title
-                          : "" + item.name
-                          ? item.name
-                          : "" + item.original_name
-                          ? item.original_name
-                          : "" + item.known_for_department
-                          ? item.known_for_department
-                          : ""}
-                      </p>
-                      <p>
-                        {item.first_air_date
-                          ? item.first_air_date
-                          : "" + item.release_date
-                          ? item.release_date
-                          : "" + item}
-                        {"  •  "}
-                        {item.media_type}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })
-            ) : (
-              <p>Can Not Fetch Data....</p>
-            )}
-          </ul>
+          {selectedMedia.showSuggestions && (
+            <ul
+              className={`search-auto-complete-container ${
+                searchAutocompleteList.results ? "show-suggestions" : ""
+              }`}
+            >
+              {searchAutocompleteList.results ? (
+                searchAutocompleteList.results.map((item) => {
+                  return (
+                    <li
+                      onClick={() => {
+                        setQueryString(item.title);
+                        setSelectedMedia({
+                          id: item.id,
+                          showSuggestions: false,
+                        });
+                      }}
+                    >
+                      <img
+                        src={`https://image.tmdb.org/t/p/w200/${
+                          item.poster_path
+                            ? item.poster_path
+                            : item.backdrop_path + item.profile_path
+                            ? item.profile_path
+                            : ""
+                        }`}
+                      />
+                      <div>
+                        <p>
+                          {item.title
+                            ? item.title
+                            : "" + item.name
+                            ? item.name
+                            : "" + item.original_name
+                            ? item.original_name
+                            : "" + item.known_for_department
+                            ? item.known_for_department
+                            : ""}
+                        </p>
+                        <p>
+                          {item.first_air_date
+                            ? item.first_air_date
+                            : "" + item.release_date
+                            ? item.release_date
+                            : "" + item}
+                          {"  •  "}
+                          {item.media_type}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })
+              ) : (
+                <p>Can Not Fetch Data....</p>
+              )}
+            </ul>
+          )}
         </form>
       </div>
       <div className="badges-container">

@@ -9,6 +9,7 @@ import { AuthProvider } from "./components/user/AuthContext";
 import UpdateProfile from "./components/user/UpdateProfile";
 import ForgotPassword from "./components/user/ForgotPassword";
 import Account from "./components/user/Account";
+import MediaPage from "./components/MediaPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignInPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/movie/:id" element={<MediaPage />} />
         </Routes>
       </AuthProvider>
     </Router>

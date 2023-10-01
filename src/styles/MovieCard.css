@@ -1,19 +1,20 @@
 .movie-card {
   width: fit-content;
-  height: 300px;
+  height: 250px;
   background: transparent;
   position: relative;
-  background-color: red;
+  background-color: var(--primary-background-color);
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+ box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
     rgb(0 0 0/73%) 0px 16px 10px -10px;
   display: inline-block;
-  margin: 10px;
+  margin: 5px;
+  margin-right: 20px;
 }
 .movie-card-left {
-  width: 250px;
+  width: 200px;
   height: 100%;
   float: left;
   background: transparent;
@@ -43,7 +44,7 @@
     0.5s z-index ease-in; */
   transition-delay: 0.1s;
   opacity: 0;
-  width: 250px;
+  width: 200px;
   height: 100%;
   background: #000000;
   overflow: hidden;
@@ -56,8 +57,8 @@
 }
 .show-card-details {
   opacity: 1;
-  transform: translate(250px, 0);
-  width: 325px;
+  transform: translate(200px, 0);
+  width: 236px;
   z-index: 10;
   transition: 0.5s ease-in;
 }
@@ -66,47 +67,57 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   text-align: left;
-  font-size: 20px;
-  margin: 30px 0 0 0;
-  padding: 0 0 0 40px;
+  font-size: 17px;
+  margin: 20px 0 0 0;
+  padding: 0 0 0 20px;
   letter-spacing: 1px;
 }
 .movie-card-right-details ul {
   list-style-type: none;
-  padding: 0 0 0 40px;
-  margin: 10px 0 0 0;
+  padding: 0 0 0 20px;
+  margin: 5px 0 0 0;
 }
 .movie-card-right-details ul li {
   display: inline;
   color: #e3e3e3;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  padding: 0 40px 0 0;
+  font-weight: 200;
+  font-size: 12px;
+  padding: 0 20px 0 0;
 }
 
 .movie-card-right-review p {
   color: white;
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  padding: 0 40px 0 40px;
+  
+  width: 100%;
+  height: 80%;
+  height: 100px;
+  padding: 0 20px 0 20px;
   letter-spacing: 1px;
-  margin: 10px 0 10px 0;
-  line-height: 20px;
+  margin: 5px 0 5px 0;
+  line-height: 15px;
+  /* text-align: justify !important; */
+  
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  
 }
 .movie-card-right-review a {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  padding: 0 0 0 40px;
+  font-size: 12px;
+  padding: 0 0 0 20px;
   color: var(--primary-font-color-4);
   margin: 0;
 }
 .movie-card-right-button {
-  padding: 0 0 0 40px;
-  margin: 30px 0 0 0;
+  padding: 0 0 0 20px;
+  margin: 10px 0 0 0;
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   color: white;
 }
 .movie-card-right-button a {
@@ -115,7 +126,7 @@
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   border: 2px solid var(--primary-font-color-4);
-  padding: 10px 10px 10px 40px;
+  padding: 5px 5px 5px 20px;
   font-size: 12px;
   background: url(../assets/icons/play-icon-white.png);
   background-color: var(--primary-font-color-3);
