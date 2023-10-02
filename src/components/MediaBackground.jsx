@@ -71,8 +71,7 @@ export default function MediaBackground({ id }) {
           className="media-backdrop"
           style={{
             backgroundImage: `url('https://image.tmdb.org/t/p/original/${mediaData.backdrop_path}')`,
-            // backgroundImage: `url('https://image.tmdb.org/t/p/original/iiXliCeykkzmJ0Eg9RYJ7F2CWSz.jpg')`,
-            opacity: 1,
+            opacity: opacity,
           }}
         ></div>
       )}
@@ -80,7 +79,11 @@ export default function MediaBackground({ id }) {
       {mediaData && (
         <div
           className="backdrop-details"
-          style={{ zIndex: 10, justifyContent: "flex-end" }}
+          style={{
+            zIndex: 10,
+            justifyContent: "flex-end",
+            paddingBottom: "310px",
+          }}
         >
           <ul className="media-rating-list">
             <li>
@@ -105,7 +108,7 @@ export default function MediaBackground({ id }) {
 
           {mediaData.images && mediaData.images.logos ? (
             <img
-              style={{ height: "100px" }}
+              style={{ height: "150px", maxWidth: "70%" }}
               className="media-logo"
               src={`https://image.tmdb.org/t/p/original${mediaData.images.logos[0].file_path}`}
             />
@@ -117,14 +120,14 @@ export default function MediaBackground({ id }) {
             <p className="media-tagline">{mediaData.tagline.toUpperCase()}</p>
           )}
 
-          <p
+          {/* <p
             className="media-overview"
-            style={{
-              marginBottom: "35%",
-            }}
+            // style={{
+            //   marginBottom: "35%",
+            // }}
           >
             {mediaData.overview}
-          </p>
+          </p> */}
         </div>
       )}
     </div>
