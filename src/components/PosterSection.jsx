@@ -25,7 +25,9 @@ export default function PosterSection({ url, title }) {
 
   return (
     <div className="poster-section">
-      <div className="poster-section-title">{title}</div>
+      <div className="pTag-title-container">
+        <p className="pTagTitle deepshadow">{title}</p>
+      </div>
 
       {posterSectionList.results ? (
         <MediaBackground id={posterSectionList.results[0].id} />

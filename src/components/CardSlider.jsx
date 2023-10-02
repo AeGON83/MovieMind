@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import MovieCard from "./MovieCard";
+import forwardIcon from "../assets/icons/forward-icon.svg";
+import backwardIcon from "../assets/icons/backward-icon.svg";
 
 export default function CardSlider(props) {
   const data = props.data;
@@ -78,12 +80,12 @@ export default function CardSlider(props) {
   return (
     <>
       <div className="movie-cards-container" ref={sliderRef}>
-        <button
+        {/* <button
           className="movie-card-slider-button left-btn"
           onClick={handleSlideLeft}
         >
           &lt;
-        </button>
+        </button> */}
         {data
           ? data.map((item) => (
               <MovieCard
@@ -99,12 +101,34 @@ export default function CardSlider(props) {
               />
             ))
           : "error"}
-        <button
+        {/* <button
           className="movie-card-slider-button right-btn"
           onClick={handleSlideRight}
         >
           &gt;
-        </button>
+        </button> */}
+        <div
+          className="slider-nav"
+          style={{
+            bottom: "35%",
+            right: "0",
+            zIndex: 13,
+            // top:"calc(-1rem + 10px)"
+          }}
+        >
+          <img
+            src={backwardIcon}
+            style={{ backgroundColor: "rgba(207, 20, 20, 0.4)" }}
+            className="slider-nav-btn"
+            onClick={handleSlideLeft}
+          />
+          <img
+            src={forwardIcon}
+            style={{ backgroundColor: "rgba(207, 20, 20, 0.4)" }}
+            className="slider-nav-btn"
+            onClick={handleSlideRight}
+          />
+        </div>
       </div>
     </>
   );

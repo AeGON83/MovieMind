@@ -51,11 +51,13 @@ a {
 }
 ::-webkit-scrollbar-thumb {
   background: white;
-  border-radius: 300px;
 }
 
 .homepage-first-screen {
   height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .normal-button {

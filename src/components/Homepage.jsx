@@ -7,9 +7,9 @@ import PosterSection from "./PosterSection";
 export default function () {
   const sections = [
     { url: "movie/now_playing", title: "popular" },
-    { url: "movie/top_rated", title: "top_rated" },
+    { url: "movie/top_rated", title: "top rated" },
     { url: "movie/upcoming", title: "upcoming" },
-    { url: "tv/top_rated", title: "top_rated" },
+    { url: "tv/top_rated", title: "top rated" },
     { url: "movie/popular", title: "popular" },
   ];
 
@@ -19,11 +19,10 @@ export default function () {
         <Navbar />
         <SearchBar />
         <CategoryBar />
-
-        {sections.map((section, index) => (
-          <PosterSection key={index} url={section.url} title={section.title} />
-        ))}
       </div>
+      {sections.map((section, index) => (
+        <PosterSection key={index} url={section.url} title={section.title} />
+      ))}
     </>
   );
 }

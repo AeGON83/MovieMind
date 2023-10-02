@@ -85,7 +85,9 @@ export default function MediaBackground({ id }) {
           <ul className="media-rating-list">
             <li>
               <div className="star-icon"></div>
-              {mediaData.vote_average ? `${mediaData.vote_average}` : "n/a"}
+              {mediaData.vote_average
+                ? `${mediaData.vote_average}`.substr(0, 3)
+                : "n/a"}
             </li>
             <li>
               {mediaData.release_date

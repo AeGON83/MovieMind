@@ -16,6 +16,10 @@
   top: 4%;
 }
 
+.search-auto-complete-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
 .searchbar-title-container > p {
   width: 900px;
   text-wrap: balance;
