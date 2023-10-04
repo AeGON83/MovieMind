@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./user/AuthContext";
 
-export default function Navbar({ style }) {
+export default function Navbar({ navStyle }) {
   const navigate = useNavigate();
   const navigateToHomepage = () => {
     navigate("/");
@@ -10,7 +10,7 @@ export default function Navbar({ style }) {
 
   let { currentUser } = useAuth();
   return (
-    <div className="navbar-container" style={style}>
+    <div className="navbar-container" style={navStyle}>
       <div className="navbar-wrapper">
         <div className="navbar-title">
           <div className="navbar-title-logo" onClick={navigateToHomepage}></div>

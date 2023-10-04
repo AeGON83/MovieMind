@@ -40,10 +40,10 @@ export default function MovieCard(props) {
           //   resumeScrollAnimation();
         }}
       >
-        <h1>
+        <p className="movie-card-title">
           {title}
           {name}
-        </h1>
+        </p>
         <div className="movie-card-right-details">
           <ul>
             <li>

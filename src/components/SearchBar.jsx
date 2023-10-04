@@ -8,7 +8,8 @@ export default function SearchBar() {
   const [queryString, setQueryString] = useState("");
   const [selectedMedia, setSelectedMedia] = useState({
     id: "",
-    showSuggestions: queryString ? true : false,
+    media_type: "",
+    showSuggestions: queryString !== "" ? true : false,
   });
   const navigate = useNavigate();
 
@@ -62,10 +63,7 @@ export default function SearchBar() {
   };
   const searchMedia = () => {
     // window.alert(selectedMedia.id);
-    if (selectedMedia.id == "") {
-      return;
-    }
-    navigate(`/movie/${selectedMedia.id}`);
+    navigate(`/${selectedMedia.media_type}/${selectedMedia.id}`);
   };
 
   return (
@@ -79,7 +77,9 @@ export default function SearchBar() {
           action=""
           onSubmit={(e) => e.preventDefault()}
           className={`search-bar-form ${
-            selectedMedia.showSuggestions ? "search-bar-form-focus" : ""
+            selectedMedia.showSuggestions && queryString != ""
+              ? "search-bar-form-focus"
+              : ""
           }`}
         >
           <input
@@ -92,10 +92,10 @@ export default function SearchBar() {
               handleSearchChange(e);
               setSelectedMedia({
                 id: "",
+                media_type: "",
                 showSuggestions: true,
               });
             }}
-            // name="q"
           />
           <label className="search-bar-switch">
             <input
@@ -112,7 +112,7 @@ export default function SearchBar() {
           >
             {toggleSearchType ? "AI " : "Normal "}Search
           </button>
-          {selectedMedia.showSuggestions && (
+          {selectedMedia.showSuggestions && queryString != "" && (
             <ul
               className={`search-auto-complete-container ${
                 searchAutocompleteList.results ? "show-suggestions" : ""
@@ -123,9 +123,16 @@ export default function SearchBar() {
                   return (
                     <li
                       onClick={() => {
-                        setQueryString(item.title);
+                        setQueryString(
+                          (item.title ? item.title : item.name)
+                            ? item.title
+                              ? item.title
+                              : item.name
+                            : item.known_for_department
+                        );
                         setSelectedMedia({
                           id: item.id,
+                          media_type: item.media_type,
                           showSuggestions: false,
                         });
                       }}
@@ -145,8 +152,8 @@ export default function SearchBar() {
                             ? item.title
                             : "" + item.name
                             ? item.name
-                            : "" + item.original_name
-                            ? item.original_name
+                            : "" + item.name
+                            ? item.name
                             : "" + item.known_for_department
                             ? item.known_for_department
                             : ""}

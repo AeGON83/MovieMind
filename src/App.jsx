@@ -21,7 +21,7 @@ function App() {
           <Route path="/signup" element={<SignInPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/movie/:id" element={<MediaPage />} />
+          <Route path="/:type/:id" element={<MediaPage />} />
         </Routes>
       </AuthProvider>
     </Router>

@@ -47,6 +47,7 @@ export default function CardSlider(props) {
   return (
     <>
       <div className="movie-cards-outer-container" ref={outerContainerRef}>
+        {<div className="blur-class"></div>}
         <div
           className={`
             movie-cards-inner-container ${isPaused ? "" : "animation-play"}`}

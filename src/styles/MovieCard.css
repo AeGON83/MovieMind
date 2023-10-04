@@ -59,11 +59,10 @@
 .movie-card-right {
   /* transition: opacity 0.5s ease-in, width 0.5s ease-in, transform 0.5s ease-in,
     0.5s z-index ease-in; */
-  transition-delay: 0.1s;
+  /* transition-delay: 3s; */
   opacity: 0;
   width: 250px;
   height: 100%;
-  background: #000000;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -71,34 +70,55 @@
   -webkit-border-radius: 0 10px 10px 0;
   -moz-border-radius: 0 10px 10px 0;
   z-index: -1;
+  border-left: none;
+  background-color: rgb(24, 6, 76);
+  background-image: radial-gradient(
+    90.68% 92.96% at 9.32% 7.04%,
+    rgb(24, 6, 76, 0) 0%,
+    rgb(24, 6, 76, 0.68) 40.97%,
+    rgb(24, 6, 76, 0.8) 51.93%,
+    rgb(24, 6, 76, 0.95) 77.75%,
+    rgb(24, 6, 76, 0.95) 100%
+  );
 }
+
 .show-card-details {
+  transition: 0.3s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.34);
   opacity: 1;
   transform: translate(200px, 0);
   width: 236px;
+  border: 3px solid rgba(77, 77, 77, 0.8);
+  border-left: none;
   z-index: 10;
-  transition: 0.5s ease-in;
 }
-.movie-card-right h1 {
+
+.movie-card-title {
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 400;
   text-align: left;
   font-size: 17px;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
   padding: 0 0 0 20px;
   letter-spacing: 1px;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
 }
+
 .movie-card-right-details ul {
   list-style-type: none;
   padding: 0 0 0 20px;
   margin: 5px 0 0 0;
 }
+
 .movie-card-right-details ul li {
   display: inline;
-  color: #e3e3e3;
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
+  color: greenyellow;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
   font-size: 12px;
   padding: 0 20px 0 0;
 }
@@ -107,22 +127,20 @@
   color: white;
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-
   width: 100%;
-  height: 80%;
-  height: 100px;
   padding: 0 20px 0 20px;
   letter-spacing: 1px;
-  margin: 5px 0 5px 0;
+  margin: 5px 0 0 0;
   line-height: 15px;
-  /* text-align: justify !important; */
-
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 13px;
+  height: calc(13px * 8);
 }
 .movie-card-right-review a {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
+  font-weight: bold;
   font-size: 12px;
   padding: 0 0 0 20px;
   color: var(--primary-font-color-4);
@@ -134,6 +152,12 @@
   position: absolute;
   bottom: 20px;
   color: white;
+  scale: 1.2;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.show-card-details div .movie-card-right-button {
+  opacity: 1;
 }
 .movie-card-right-button a {
   color: white;

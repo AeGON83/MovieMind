@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Badge from "./Badge";
 
 export default function MediaBackground({ id }) {
   const [opacity, setOpacity] = useState(1);
@@ -119,15 +118,6 @@ export default function MediaBackground({ id }) {
           {mediaData.tagline && (
             <p className="media-tagline">{mediaData.tagline.toUpperCase()}</p>
           )}
-
-          {/* <p
-            className="media-overview"
-            // style={{
-            //   marginBottom: "35%",
-            // }}
-          >
-            {mediaData.overview}
-          </p> */}
         </div>
       )}
     </div>

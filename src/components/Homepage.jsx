@@ -15,11 +15,11 @@ export default function () {
 
   return (
     <>
-      {/* <div className="homepage-first-screen">
+      <div className="homepage-first-screen">
         <Navbar />
         <SearchBar />
         <CategoryBar />
-      </div> */}
+      </div>
       {sections.map((section, index) => (
         <PosterSection key={index} url={section.url} title={section.title} />
       ))}
