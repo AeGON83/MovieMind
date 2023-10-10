@@ -21,22 +21,39 @@ export default function Dashboard() {
   return (
     <div className="signin-page-container">
       <div className="signin-page-main">
-        <h2 className="form_title title">Profile</h2>
+        <h2 className="form_title title">User Profile</h2>
         {error && <div className="alert">{error}</div>}
-        <p className="account-email">{currentUser.email}</p>
-        <Link
-          to="/update-profile"
-          className="form__button signin-button submit"
+        <p style={{ fontFamily: "Oswald , sans-serif", fontSize: "18px" }}>
+          Email
+        </p>
+        <p className="account-email" style={{ fontSize: "15px" }}>
+          {currentUser.email}
+        </p>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            gap: "20%",
+            height: "100%",
+            alignItems: "flex-end",
+            position: "absolute",
+            top: "-10%",
+          }}
         >
-          Update Profile
-        </Link>
+          <Link to="/update-profile">
+            <button className="form__button signin-button">
+              Update Profile
+            </button>
+          </Link>
 
-        <button
-          className="form__button signin-button submit"
-          onClick={handleLogout}
-        >
-          Log Out
-        </button>
+          <button
+            className="form__button signin-button submit"
+            onClick={handleLogout}
+          >
+            Log Out
+          </button>
+        </div>
       </div>
     </div>
   );
