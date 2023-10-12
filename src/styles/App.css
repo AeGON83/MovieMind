@@ -11,6 +11,9 @@
 @import url("./PosterSection.css");
 @import url("./CardSlider.css");
 @import url("./MediaBackground.css");
+@import url("./DiscoverPage.css");
+@import url("./Filters.css");
+
 
 :root {
   --primary-background-color: #0a0025;

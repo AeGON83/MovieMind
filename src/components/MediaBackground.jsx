@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Badge from "./Badge";
 
 export default function MediaBackground({ id }) {
   const [opacity, setOpacity] = useState(1);
@@ -64,62 +65,73 @@ export default function MediaBackground({ id }) {
   };
 
   return (
-    <div className="media-back">
-      {mediaData.id && (
-        <div
-          className="media-backdrop"
-          style={{
-            backgroundImage: `url('https://image.tmdb.org/t/p/original/${mediaData.backdrop_path}')`,
-            opacity: opacity,
-          }}
-        ></div>
-      )}
+		<div className='media-back'>
+			{mediaData.id && (
+				<div
+					className='media-backdrop'
+					style={{
+						backgroundImage: `url('https://image.tmdb.org/t/p/original/${mediaData.backdrop_path}')`,
+						opacity: opacity,
+					}}
+				></div>
+			)}
 
-      {mediaData && (
-        <div
-          className="backdrop-details"
-          style={{
-            zIndex: 10,
-            justifyContent: "flex-end",
-            paddingBottom: "310px",
-          }}
-        >
-          <ul className="media-rating-list">
-            <li>
-              <div className="star-icon"></div>
-              {mediaData.vote_average
-                ? `${mediaData.vote_average}`.substr(0, 3)
-                : "n/a"}
-            </li>
-            <li>
-              {mediaData.release_date
-                ? mediaData.release_date.substr(0, 4)
-                : "n/a"}
-            </li>
-            <li>
-              {mediaData.runtime
-                ? `${Math.floor(mediaData.runtime / 60)}h ${
-                    mediaData.runtime % 60
-                  }m`
-                : ""}
-            </li>
-          </ul>
+			{mediaData && (
+				<div
+					className='backdrop-details'
+					style={{
+						zIndex: 10,
+						justifyContent: "flex-end",
+						paddingBottom: "310px",
+					}}
+				>
+					<ul className='media-rating-list'>
+						<li>
+							<div className='star-icon'></div>
+							{mediaData.vote_average
+								? `${mediaData.vote_average}`.substr(0, 3)
+								: "n/a"}
+						</li>
+						<li>
+							{mediaData.release_date
+								? mediaData.release_date.substr(0, 4)
+								: "n/a"}
+						</li>
+						<li>
+							{mediaData.runtime
+								? `${Math.floor(mediaData.runtime / 60)}h ${
+										mediaData.runtime % 60
+								  }m`
+								: ""}
+						</li>
+					</ul>
 
-          {mediaData.images && mediaData.images.logos ? (
-            <img
-              style={{ height: "150px", maxWidth: "70%" }}
-              className="media-logo"
-              src={`https://image.tmdb.org/t/p/original${mediaData.images.logos[0].file_path}`}
-            />
-          ) : (
-            <p className="media-logo-alt">{mediaData.title}</p>
-          )}
+					{mediaData.images &&
+					mediaData.images.logos &&
+					mediaData.images.logos[0] ? (
+						<img
+							style={{ height: "150px", maxWidth: "70%" }}
+							className='media-logo'
+							src={`https://image.tmdb.org/t/p/original${mediaData.images.logos[0].file_path}`}
+						/>
+					) : (
+						<p className='media-logo-alt'>{mediaData.title}</p>
+					)}
 
-          {mediaData.tagline && (
-            <p className="media-tagline">{mediaData.tagline.toUpperCase()}</p>
-          )}
-        </div>
-      )}
-    </div>
-  );
+					{mediaData.tagline && (
+						<p className='media-tagline'>{mediaData.tagline.toUpperCase()}</p>
+					)}
+
+					{/* <p
+            className="media-overview"
+            // style={{
+            //   marginBottom: "35%",
+            // }}
+          >
+            {mediaData.overview}
+          </p> */}
+				</div>
+			)}
+		</div>
+	);
 }

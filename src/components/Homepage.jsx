@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
 import PosterSection from "./PosterSection";
+import DiscoverPage from "./DiscoverPage";
 
 export default function () {
   const sections = [

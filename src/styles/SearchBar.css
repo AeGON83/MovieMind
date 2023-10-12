@@ -170,13 +170,16 @@
   top: 22%;
   margin: 0 auto;
   height: fit-content;
-  width: 50% !important ;
+  width: 60% !important ;
   padding: 10px;
   display: flex;
+  row-gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
+
+
 
 .badge {
   cursor: pointer;
