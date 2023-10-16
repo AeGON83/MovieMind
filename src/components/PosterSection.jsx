@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MediaBackground from "./MediaBackground";
 import CardSlider from "./CardSlider";
 
-export default function PosterSection({ url, title }) {
+export default function PosterSection({ url, title ,type}) {
   const [posterSectionList, setPosterSectionList] = useState({});
 
   const apiReqOptions = {
@@ -14,7 +14,7 @@ export default function PosterSection({ url, title }) {
   };
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/${url}`, apiReqOptions)
+    fetch(`https://api.themoviedb.org/3/${type}${url}`, apiReqOptions)
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -28,7 +28,7 @@ export default function PosterSection({ url, title }) {
       <div className="poster-section-title">{title}</div>
 
       {posterSectionList.results ? (
-        <MediaBackground id={posterSectionList.results[0].id} />
+        <MediaBackground id={posterSectionList.results[0].id}  type={type} />
       ) : (
         ""
       )}

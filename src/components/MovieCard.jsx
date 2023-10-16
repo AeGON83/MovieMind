@@ -27,7 +27,7 @@ export default function MovieCard(props) {
           //   resumeScrollAnimation();
         }}
       >
-        <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} />
+        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
       </div>
       <div
         className={`movie-card-right ${showDetails ? "show-card-details" : ""}`}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Badge from "./Badge";
 
-export default function MediaBackground({ id }) {
+export default function MediaBackground({ id, type }) {
   const [opacity, setOpacity] = useState(1);
   const [mediaData, setMediaData] = useState({});
 
@@ -15,7 +15,7 @@ export default function MediaBackground({ id }) {
     };
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?append_to_response=images&language=en`,
+      `https://api.themoviedb.org/3${type}/${id}?append_to_response=images&language=en`,
       options
     )
       .then((response) => response.json())
@@ -26,24 +26,42 @@ export default function MediaBackground({ id }) {
       .catch((err) => console.error(err));
   }, []);
 
-  function onScroll(e) {
-    if (window.scrollY > 140) {
-      return;
-    }
+   let ratingList = [
+			mediaData.vote_average ? `${mediaData.vote_average}`.substr(0, 3) : "-",
+			mediaData.first_air_date
+				? `${mediaData.first_air_date.substr(0, 4)}${
+						mediaData.last_air_date
+							? " - " + mediaData.last_air_date.substr(0, 4)
+							: "-"
+				  }`
+				: "-",
+			mediaData.number_of_seasons
+				? mediaData.number_of_seasons + " Seasons"
+				: "-",
+			mediaData.number_of_episodes
+				? mediaData.number_of_episodes + " Episodes"
+				: "-",
+			mediaData.id && mediaData.status ? mediaData.status : "-",
+		]
 
-    if (window.scrollY < 10) {
-      setOpacity(1);
-      return;
-    }
+			function onScroll(e) {
+				if (window.scrollY > 140) {
+					return;
+				}
 
-    let nOpacity = 100 - window.scrollY / 2;
+				if (window.scrollY < 10) {
+					setOpacity(1);
+					return;
+				}
 
-    if (nOpacity < 50) {
-      nOpacity = 50;
-    }
+				let nOpacity = 100 - window.scrollY / 2;
 
-    setOpacity(nOpacity / 100);
-  }
+				if (nOpacity < 50) {
+					nOpacity = 50;
+				}
+
+				setOpacity(nOpacity / 100);
+			};
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -86,24 +104,17 @@ export default function MediaBackground({ id }) {
 					}}
 				>
 					<ul className='media-rating-list'>
-						<li>
-							<div className='star-icon'></div>
-							{mediaData.vote_average
-								? `${mediaData.vote_average}`.substr(0, 3)
-								: "n/a"}
-						</li>
-						<li>
-							{mediaData.release_date
-								? mediaData.release_date.substr(0, 4)
-								: "n/a"}
-						</li>
-						<li>
-							{mediaData.runtime
-								? `${Math.floor(mediaData.runtime / 60)}h ${
-										mediaData.runtime % 60
-								  }m`
-								: ""}
-						</li>
+						{ratingList.map((item, index) => {
+							if (index == 0) {
+								return (
+									<li key={index}>
+										<div className='star-icon'></div>
+										{item}
+									</li>
+								);
+							}
+							return <li key={index}>{item}</li>;
+						})}
 					</ul>
 
 					{mediaData.images &&

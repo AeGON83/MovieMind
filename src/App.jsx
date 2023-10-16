@@ -11,9 +11,11 @@ import ForgotPassword from "./components/user/ForgotPassword";
 import Account from "./components/user/Account";
 import MediaPage from "./components/MediaPage";
 import DiscoverPage from "./components/DiscoverPage";
+import MovieSection from "./components/MovieSection";
+import TvSection from "./components/TvSection";
 
 function App() {
-  return (
+	return (
 		<Router>
 			<AuthProvider>
 				<Routes>
@@ -22,8 +24,15 @@ function App() {
 						element={<Homepage />}
 					/>
 					<Route
+						path='/MovieSection'
+						element={<MovieSection />}
+					/>
+					<Route
+						path='/TvSection'
+						element={<TvSection />}
+					/>
+					<Route
 						path='/DiscoverPage/:id'
-          
 						element={<DiscoverPage />}
 					/>
 					<Route
@@ -53,4 +62,3 @@ function App() {
 }
 
 export default App;
- 

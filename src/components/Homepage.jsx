@@ -3,15 +3,15 @@ import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
 import PosterSection from "./PosterSection";
-import DiscoverPage from "./DiscoverPage";
+
 
 export default function () {
   const sections = [
-    { url: "movie/now_playing", title: "popular" },
-    { url: "movie/top_rated", title: "top rated" },
-    { url: "movie/upcoming", title: "upcoming" },
-    { url: "tv/top_rated", title: "top rated" },
-    { url: "movie/popular", title: "popular" },
+    {type:'/movie', url: "/now_playing", title: "popular" },
+    {type:'/movie', url: "/top_rated", title: "top rated" },
+    {type:'/movie', url: "/upcoming", title: "upcoming" },
+    {type:'/tv', url: "/top_rated", title: "top rated" },
+    {type:'/movie', url: "/popular", title: "popular" },
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function () {
         <CategoryBar />
       </div>
       {sections.map((section, index) => (
-        <PosterSection key={index} url={section.url} title={section.title} />
+        <PosterSection key={index} url={section.url} title={section.title} type={section.type} />
       ))}
     </>
   );
