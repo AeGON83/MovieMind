@@ -1,0 +1,204 @@
+.community-page {
+  width: 100%;
+  background-color: var(--primary-background-color);
+  background-color: #bc9999;
+  opacity: 1;
+  background-image: radial-gradient(
+      circle at 46.5vw 50vh,
+      /* Updated center point to 45% horizontally and vertically */ #cf1414,
+      var(--primary-background-color)
+    ),
+    repeating-radial-gradient(
+      circle at 46.5vw 50vh,
+      /* Updated center point to 45% horizontally and vertically */ #cf1414,
+      #cf1414,
+      12px,
+      transparent 24px,
+      transparent 12px
+    );
+  background-blend-mode: multiply;
+}
+
+.community-page-title-section {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  /* background-color: blue; */
+}
+
+.community-page-title-section > .cp-left {
+  display: flex;
+  width: 45%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 5%;
+  /* object-fit: 30%; */
+}
+
+.community-page-title-section > .cp-left > .media-overview:first-child {
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 5px;
+  font-weight: 400;
+  color: #ff9830;
+}
+.community-page-title-section > .cp-left > .media-overview:last-child {
+  color: #d76c00;
+  font-size: 18px;
+}
+
+.community-page-title-section > .cp-left > .media-logo-alt {
+  margin-bottom: 20px;
+  background: #ff9830;
+  background: repeating-radial-gradient(
+    ellipse farthest-corner at center center,
+    #ff9830 0%,
+    #e81616 53%,
+    #8f0e0e 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.community-page-title-section > .cp-left > a {
+  width: 20%;
+  position: relative;
+  top: 70px;
+  border-color: #ff9830;
+  color: #ff9830;
+  font-weight: 500;
+  text-align: center;
+}
+.community-page-title-section > .cp-left > a:hover {
+  background-color: #ff9830;
+
+  color: black;
+}
+
+.community-page-title-section > .cp-right {
+  width: 55%;
+  height: calc(100% - 60px);
+  position: relative;
+  top: 60px;
+  background-image: url("../assets/community-page.jpg");
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.8;
+}
+
+/* css for community component */
+
+.community-sections {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  background: url(../assets/login-background.jpg);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.community-container {
+  width: 700px;
+  height: 250px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+}
+
+.community-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-size: cover !important;
+  background-position: top !important;
+  background-repeat: no-repeat !important;
+  z-index: 0;
+}
+
+.community-logo {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at -10% center,
+      /* Updated center point to 45% horizontally and vertically */ #cf1414,
+      var(--primary-background-color)
+    ),
+    repeating-radial-gradient(
+      circle at -10% center,
+      /* Updated center point to 45% horizontally and vertically */ #cf1414,
+      #cf1414,
+      12px,
+      transparent 24px,
+      transparent 12px
+    );
+  background-blend-mode: multiply;
+}
+.community-logo img {
+  border-radius: 30px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  transition: 0.3s ease-in-out;
+}
+
+.community-details-main-wrapper {
+  background-size: cover !important;
+  background-position: top !important;
+  background-repeat: no-repeat !important;
+  width: 70%;
+  height: 100%;
+}
+
+.community-details-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 0 30px 30px 0;
+  height: 250px;
+  padding-left: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.community-details {
+  text-transform: uppercase;
+  font-size: 80px;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  color: #ff9830;
+  margin-bottom: 10px;
+  background: #ff9830;
+  background: repeating-radial-gradient(
+    ellipse farthest-corner at 0 center,
+    #ff9830 0%,
+    #e81616 53%,
+    #8f0e0e 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.community-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  background: url(../assets/icons/right-arrow.svg);
+  background-color: brown;
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}

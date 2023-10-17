@@ -14,7 +14,7 @@
 @import url("./DiscoverPage.css");
 @import url("./Filters.css");
 @import url("./MovieTabs.css");
-
+@import url("./CommunityPage.css");
 
 :root {
   --primary-background-color: #0a0025;

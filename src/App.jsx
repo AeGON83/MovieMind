@@ -13,52 +13,27 @@ import MediaPage from "./components/MediaPage";
 import DiscoverPage from "./components/DiscoverPage";
 import MovieSection from "./components/MovieSection";
 import TvSection from "./components/TvSection";
+import CommunityPage from "./components/CommunityPage";
 
 function App() {
-	return (
-		<Router>
-			<AuthProvider>
-				<Routes>
-					<Route
-						path='/'
-						element={<Homepage />}
-					/>
-					<Route
-						path='/MovieSection'
-						element={<MovieSection />}
-					/>
-					<Route
-						path='/TvSection'
-						element={<TvSection />}
-					/>
-					<Route
-						path='/DiscoverPage/:id'
-						element={<DiscoverPage />}
-					/>
-					<Route
-						path='/update-profile'
-						element={<UpdateProfile />}
-					/>
-					<Route
-						path='/signup'
-						element={<SignInPage />}
-					/>
-					<Route
-						path='/forgot-password'
-						element={<ForgotPassword />}
-					/>
-					<Route
-						path='/account'
-						element={<Account />}
-					/>
-					<Route
-						path='/:type/:id'
-						element={<MediaPage />}
-					/>
-				</Routes>
-			</AuthProvider>
-		</Router>
-	);
+  return (
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/MovieSection" element={<MovieSection />} />
+          <Route path="/TvSection" element={<TvSection />} />
+          <Route path="/DiscoverPage/:id" element={<DiscoverPage />} />
+          <Route path="/update-profile" element={<UpdateProfile />} />
+          <Route path="/signup" element={<SignInPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/:type/:id" element={<MediaPage />} />
+          <Route path="/community" element={<CommunityPage />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
+  );
 }
 
 export default App;
