@@ -30,7 +30,8 @@ export default function CategoryBar() {
       vid: "src\\assets\\catagory-vids\\disney.mp4",
     },
     {
-      img: "src\\assets\\catagory-imgs\\viewers-pixar.png",
+      id: 87359,
+      img: "https://image.tmdb.org/t/p/original/tRwySKvciecGLk7C3A7e3WmF1dU.png",
       vid: "src\\assets\\catagory-vids\\pixar.mp4",
     },
   ];
