@@ -1,38 +1,48 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import CategoryBox from "./CategoryBox";
 
-export default function CategoryBox({ src }) {
-  const videoRef = useRef(null);
-  const navigate = useNavigate();
-  const handleMouseEnter = () => {
-    videoRef.current.play();
-  };
+export default function CategoryBar() {
+  const categorySrcList = [
+    {
+      id: 86311,
 
-  const handleMouseLeave = () => {
-    videoRef.current.pause();
-  };
-
-  function handleMoveToCollection() {
-    navigate(`/Collection/${src.id}`);
-  }
+      img: "https://image.tmdb.org/t/p/original/cBpQgSEoFlmuGTCIoVKhq1Jy2tM.png",
+      vid: "src\\assets\\catagory-vids\\marvel.mp4",
+    },
+    {
+      id: 645,
+      img: "https://image.tmdb.org/t/p/original/h02wT4F1aPBkQ94NlSx3ypOI5xl.png",
+      vid: "src\\assets\\catagory-vids\\disney.mp4",
+    },
+    {
+      id: 1241,
+      img: "https://image.tmdb.org/t/p/original/jIR5aWOBsjPVoCwDMQcrY4iaxcd.png",
+      vid: "src\\assets\\catagory-vids\\pixar.mp4",
+    },
+    {
+      id: 10,
+      img: "src\\assets\\catagory-imgs\\viewers-starwars.png",
+      vid: "src\\assets\\catagory-vids\\star-wars.mp4",
+    },
+    {
+      id: 9485,
+      img: "https://image.tmdb.org/t/p/original/jCbjdbiG1BtiX4aqhvgf6YdXuIq.png",
+      vid: "src\\assets\\catagory-vids\\disney.mp4",
+    },
+    {
+      id: 87359,
+      img: "https://image.tmdb.org/t/p/original/tRwySKvciecGLk7C3A7e3WmF1dU.png",
+      vid: "src\\assets\\catagory-vids\\pixar.mp4",
+    },
+  ];
 
   return (
-    <div
-      className="category-box"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleMoveToCollection}
-    >
-      <img
-        style={{
-          objectFit: "contain",
-          scale: "0.9",
-        }}
-        src={src.img}
-      ></img>
-      <video ref={videoRef} loop={true} playsInline={true} muted>
-        <source src={src.vid} type="video/mp4" />
-      </video>
+    <div className="category-main-wrapper">
+      <div className="category-container">
+        {categorySrcList.map((item, index) => {
+          return <CategoryBox key={index} src={item} />;
+        })}
+      </div>
     </div>
   );
 }

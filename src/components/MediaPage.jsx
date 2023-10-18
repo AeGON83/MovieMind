@@ -259,6 +259,28 @@ export default function MediaPage() {
                   {/* You can customize the button icon based on the favorite status */}
                   {/* {isFavorite ? "Added to Favorites" : "Add to Favorites"} */}
                 </button>
+                <div class="rating">
+                  <input value="10" name="rating" id="star10" type="radio" />
+                  <label for="star10"></label>
+                  <input value="9" name="rating" id="star9" type="radio" />
+                  <label for="star9"></label>
+                  <input value="8" name="rating" id="star8" type="radio" />
+                  <label for="star8"></label>
+                  <input value="7" name="rating" id="star7" type="radio" />
+                  <label for="star7"></label>
+                  <input value="6" name="rating" id="star6" type="radio" />
+                  <label for="star6"></label>
+                  <input value="5" name="rating" id="star5" type="radio" />
+                  <label for="star5"></label>
+                  <input value="4" name="rating" id="star4" type="radio" />
+                  <label for="star4"></label>
+                  <input value="3" name="rating" id="star3" type="radio" />
+                  <label for="star3"></label>
+                  <input value="2" name="rating" id="star2" type="radio" />
+                  <label for="star2"></label>
+                  <input value="1" name="rating" id="star1" type="radio" />
+                  <label for="star1"></label>
+                </div>
               </div>
             </div>
           </>
