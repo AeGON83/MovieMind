@@ -1,3 +1,5 @@
+/** @format */
+
 .signin-page-container {
   width: 100%;
   height: 100vh;
@@ -6,6 +8,17 @@
   color: var(--primary-font-color-1);
   background-image: url(../assets/login-background.jpg);
   background-size: cover;
+}
+
+.rat-btn {
+  background: url(../assets/icons/rate-star-icon.png);
+}
+
+.acc-heart-btn {
+  background: url(../assets/icons/heart-filled.svg);
+}
+.acc-bookmark-btn {
+  background: url(../assets/icons/bookmark-filled.svg);
 }
 
 .googleButton {

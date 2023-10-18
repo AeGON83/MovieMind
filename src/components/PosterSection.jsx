@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MediaBackground from "./MediaBackground";
 import CardSlider from "./CardSlider";
 
-export default function PosterSection({ url, title ,type}) {
+export default function PosterSection({ url, title, type }) {
   const [posterSectionList, setPosterSectionList] = useState({});
 
   const apiReqOptions = {
@@ -28,12 +28,12 @@ export default function PosterSection({ url, title ,type}) {
       <div className="poster-section-title">{title}</div>
 
       {posterSectionList.results ? (
-        <MediaBackground id={posterSectionList.results[0].id}  type={type} />
+        <MediaBackground id={posterSectionList.results[0].id} type={type} />
       ) : (
         ""
       )}
 
-      <CardSlider data={posterSectionList.results} />
+      <CardSlider data={posterSectionList.results} type={type} />
     </div>
   );
 }

@@ -15,6 +15,8 @@ import MovieSection from "./components/MovieSection";
 import TvSection from "./components/TvSection";
 import CommunityPage from "./components/CommunityPage";
 import CommunityGroup from "./components/CommunityGroup";
+import Player from "./components/Player";
+import CollectionPage from "./components/CollectionPage";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/:type/:id" element={<MediaPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/play/:id" element={<Player />} />
+          <Route path="/Collection/:id" element={<CollectionPage />} />
           <Route
             path="/community/:communityName"
             element={<CommunityGroup />}

@@ -12,10 +12,11 @@
 @import url("./CardSlider.css");
 @import url("./MediaBackground.css");
 @import url("./DiscoverPage.css");
+@import url("./CommunityGroup.css");
+@import url("./CommunityPage.css");
 @import url("./Filters.css");
 @import url("./MovieTabs.css");
-@import url("./CommunityPage.css");
-@import url("./CommunityGroup.css");
+@import url("./playe.css");
 
 :root {
   --primary-background-color: #0a0025;

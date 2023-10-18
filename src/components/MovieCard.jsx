@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MovieCard(props) {
+  const navigate = useNavigate();
+
   const {
     // pauseScrollAnimation,
     // resumeScrollAnimation,
@@ -11,11 +14,18 @@ export default function MovieCard(props) {
     release_date,
     vote_average,
     first_air_date,
+    type,
+    id,
   } = props;
 
   const [showDetails, setShowDetails] = React.useState(false);
+
+  function navigateToMediaPage() {
+    navigate(`/${type}/${id}`);
+  }
+
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={navigateToMediaPage}>
       <div
         className="movie-card-left"
         onMouseOver={() => {
@@ -60,7 +70,7 @@ export default function MovieCard(props) {
             </a>
           </div>
           <div className="movie-card-right-button">
-            <a href="" target="_blank">
+            <a href={`/play/${id}`} target="_blank">
               WATCH
             </a>
           </div>

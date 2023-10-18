@@ -11,6 +11,7 @@ export default function Navbar({ navStyle }) {
   };
 
   let { currentUser } = useAuth();
+
   return (
     <div className="navbar-container" style={navStyle}>
       <div className="navbar-wrapper">

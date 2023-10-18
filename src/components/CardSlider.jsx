@@ -111,6 +111,7 @@ import backwardIcon from "../assets/icons/backward-icon.svg";
 
 export default function CardSlider(props) {
   const data = props.data;
+
   const [isHovered, setIsHovered] = useState(false);
   const sliderRef = useRef(null);
 
@@ -202,6 +203,7 @@ export default function CardSlider(props) {
                 onMouseOut={() => setIsHovered(false)}
               >
                 <MovieCard
+                  type={props.type}
                   key={item.id}
                   id={item.id}
                   poster_path={item.poster_path}
