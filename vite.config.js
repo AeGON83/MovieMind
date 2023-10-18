@@ -6,7 +6,7 @@ dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/MovieMind",
+  base: "/",
   define: {
     "process.env": {
       REACT_APP_TMDB_API_KEY: process.env.REACT_APP_TMDB_API_KEY,
