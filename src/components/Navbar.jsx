@@ -22,9 +22,7 @@ export default function Navbar({ navStyle }) {
         <ul className="navbar-items">
           <li onClick={() => navigate("/MovieSection")}>Moveis</li>
           <li onClick={() => navigate("/TvSection")}>Web Series</li>
-          <li>
-            <a href="/community">Community</a>
-          </li>
+          <li onClick={() => navigate("/community")}>Community</li>
           <li>Favorites</li>
         </ul>
         <div className="navbar-buttons-wrapper">

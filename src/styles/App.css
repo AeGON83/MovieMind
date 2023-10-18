@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto:wght@400;500&family=Tilt+Neon&display=swap");
 @import url("./Navbar.css");
 @import url("./SearchBar.css");
 @import url("./CategoryBar.css");
@@ -15,6 +15,7 @@
 @import url("./Filters.css");
 @import url("./MovieTabs.css");
 @import url("./CommunityPage.css");
+@import url("./CommunityGroup.css");
 
 :root {
   --primary-background-color: #0a0025;

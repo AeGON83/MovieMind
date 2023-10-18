@@ -194,7 +194,8 @@
   border-radius: 50%;
   position: absolute;
   background: url(../assets/icons/right-arrow.svg);
-  background-color: brown;
+  background-color: darkred;
+  border: solid 3px rgba(255, 255, 255, 0.33);
   background-size: 30px;
   background-position: center;
   background-repeat: no-repeat;

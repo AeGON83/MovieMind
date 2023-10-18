@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 import marvelLogo from "../assets/catagory-imgs/viewers-marvel.png";
 import dcLogo from "../assets/catagory-imgs/dc-logo.svg";
 import hollywoodLogo from "../assets/catagory-imgs/hollywood-logo.svg";
@@ -11,7 +12,7 @@ import westernLogo from "../assets/catagory-imgs/western-logo.svg";
 export default function CommunityPage() {
   const communities = [
     {
-      collectionName: "hollywoodCommunity",
+      collectionName: "hollywood",
       name: "Hollywood",
       url: "https://image.tmdb.org/t/p/w500/fHpWVib37vk3v8N6IKC6sBT5TcD.jpg",
       logo: hollywoodLogo,
@@ -20,7 +21,7 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "gotCommunity",
+      collectionName: "got",
       name: "GOT Fans",
       url: "https://image.tmdb.org/t/p/w500/jJojoFmsuLPQz8AOdkeV0b686RN.jpg",
       logo: "https://image.tmdb.org/t/p/w500//mqOhYnLT7cRkYTY9dDEWfMxoQJS.png",
@@ -29,7 +30,7 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "marvelCommunity",
+      collectionName: "marvel",
       name: "Marvel Fans",
       url: "https://www.themoviedb.org/t/p/w500/wMFad1v8SwyVvrKXmsIkLhSxCEC.jpg",
       logo: marvelLogo,
@@ -38,13 +39,13 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "dcCommunity",
+      collectionName: "dc",
       name: "DC Fans",
       url: "https://image.tmdb.org/t/p/w500/3xyth9V7S3hQJeKtfbSgvVf0Pry.jpg",
       logo: dcLogo,
     },
     {
-      collectionName: "classicsCommunity",
+      collectionName: "classics",
       name: "Classics",
       url: "https://image.tmdb.org/t/p/w500/7d7RFBhnSMd9jhcOwmYkkcr7oFg.jpg",
       logo: classicsLogo,
@@ -53,7 +54,7 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "comedyCommunity",
+      collectionName: "comedy",
       name: "Comedy & Sitcom",
       url: "https://image.tmdb.org/t/p/w500/ykDYy50mHU52PqYEu4xiFFOw5mw.jpg",
       logo: sitcomLogo,
@@ -62,7 +63,7 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "fictionCommunity",
+      collectionName: "fiction",
       name: "Sci-fi",
       url: "https://image.tmdb.org/t/p/w500/kcF2iOIZwYVrLnEOyCY31j8pNhP.jpg",
       logo: scifiLogo,
@@ -71,7 +72,7 @@ export default function CommunityPage() {
       },
     },
     {
-      collectionName: "westernCommunity",
+      collectionName: "western",
       name: "western",
       url: "https://image.tmdb.org/t/p/w500/3kjOh1sWjh54y6Lx8k5Mu9kAAGS.jpg",
       logo: westernLogo,
@@ -125,6 +126,8 @@ export default function CommunityPage() {
 }
 
 function Community({ url, name, logo, collectionName, logoStyle }) {
+  const navigate = useNavigate();
+
   return (
     <div className="community-container">
       <div className="community-bg">
@@ -142,7 +145,12 @@ function Community({ url, name, logo, collectionName, logoStyle }) {
           </div>
         </div>
       </div>
-      <div className="community-button"></div>
+      <div
+        className="community-button"
+        onClick={() => {
+          navigate(`/community/${collectionName}`);
+        }}
+      ></div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import DiscoverPage from "./components/DiscoverPage";
 import MovieSection from "./components/MovieSection";
 import TvSection from "./components/TvSection";
 import CommunityPage from "./components/CommunityPage";
+import CommunityGroup from "./components/CommunityGroup";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/:type/:id" element={<MediaPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route
+            path="/community/:communityName"
+            element={<CommunityGroup />}
+          />
         </Routes>
       </AuthProvider>
     </Router>
