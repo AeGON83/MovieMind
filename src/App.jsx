@@ -21,7 +21,7 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/MovieMind" element={<Homepage />} />
           <Route path="/MovieSection" element={<MovieSection />} />
           <Route path="/TvSection" element={<TvSection />} />
           <Route path="/DiscoverPage/:id" element={<DiscoverPage />} />
