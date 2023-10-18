@@ -21,7 +21,7 @@ export default function MovieCard(props) {
   const [showDetails, setShowDetails] = React.useState(false);
 
   function navigateToMediaPage() {
-    navigate(`/${type}/${id}`);
+    navigate(`/media${type}/${id}`);
   }
 
   return (

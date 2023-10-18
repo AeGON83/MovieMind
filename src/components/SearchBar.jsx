@@ -127,7 +127,7 @@ export default function SearchBar() {
     return badgeColorList[index % badgeColorList.length];
   };
   const searchMedia = () => {
-    navigate(`/${selectedMedia.media_type}/${selectedMedia.id}`);
+    navigate(`/media/${selectedMedia.media_type}/${selectedMedia.id}`);
   };
 
   return (

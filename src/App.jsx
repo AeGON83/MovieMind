@@ -31,7 +31,7 @@ function App() {
           <Route path="/signup" element={<SignInPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/:type/:id" element={<MediaPage />} />
+          <Route path="/media/:type/:id" element={<MediaPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/play/:id" element={<Player />} />
           <Route path="/Collection/:id" element={<CollectionPage />} />
