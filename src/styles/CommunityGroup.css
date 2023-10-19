@@ -139,3 +139,9 @@
   color: inherit;
   padding: 0 10px;
 }
+
+.msg-time-stamp {
+  font-size: 12px;
+  font-weight: lighter;
+  font-style: italic;
+}

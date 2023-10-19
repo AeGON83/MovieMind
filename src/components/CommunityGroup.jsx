@@ -39,7 +39,6 @@ export default function CommunityGroup() {
           msg: "",
           name: currentUser.displayName,
           uid: currentUser.uid,
-          time: "",
           collectionName: communityName,
         }
       : {}
@@ -55,12 +54,12 @@ export default function CommunityGroup() {
       return;
     }
 
-    setPostMsgData((old) => {
-      return {
-        ...old,
-        time: formatDateAndTime(new Date()),
-      };
-    });
+    // setPostMsgData((old) => {
+    //   return {
+    //     ...old,
+    //     time: formatDateAndTime(new Date()),
+    //   };
+    // });
 
     try {
       await fetch("http://localhost:5000/add-to-array", {
@@ -68,7 +67,10 @@ export default function CommunityGroup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(postMsgData),
+        body: JSON.stringify({
+          ...postMsgData,
+          time: formatDateAndTime(new Date()),
+        }),
       });
 
       // if (response.ok) {
@@ -131,6 +133,7 @@ export default function CommunityGroup() {
                       <SingleMessage
                         key={item.uid}
                         msg={item.msg}
+                        time={item.time}
                         side={
                           item.uid == currentUser.uid ? "right-msg" : "left-msg"
                         }
@@ -183,10 +186,11 @@ export default function CommunityGroup() {
   );
 }
 
-function SingleMessage({ msg, side }) {
+function SingleMessage({ msg, side, time }) {
   return (
     <div className={`msg ${side}`}>
       <span className="msg-text">{msg}</span>
+      <p className="msg-time-stamp">{time}</p>
     </div>
   );
 }
