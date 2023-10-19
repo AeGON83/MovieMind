@@ -10,6 +10,7 @@ import {
   signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 
 import {
@@ -29,11 +30,40 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  let firstTime = true;
-  let msgUserRef = {};
 
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  async function signup(email, password, username) {
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+
+        // Update the user's profile with the provided username
+        try {
+          await updateProfile(user, {
+            displayName: username,
+          });
+
+          axios
+            .post("http://localhost:5000/createUser", {
+              uid: user.uid,
+              name: user.displayName,
+              email: user.email,
+            })
+            .then((response) => {
+              console.log("Response:", response.data);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+          return user;
+        } catch (error) {
+          // Handle the error when updating the user's profile
+          throw error;
+        }
+      })
+      .catch((error) => {
+        // Handle the error when creating the user
+        throw error;
+      });
   }
 
   const googleSignIn = () => {
@@ -72,44 +102,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
-        if (
-          firstTime &&
-          user.metadata.creationTime === user.metadata.lastSignInTime
-        ) {
-          firstTime = false;
-          msgUserRef = {
-            email: user.email,
-            uid: user.uid,
-            name: "user",
-          };
-
-          axios
-            .post("http://localhost:5000/createUser", msgUserRef)
-            .then((response) => {
-              console.log("Response:", response.data);
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        } else {
-          msgUserRef = {};
-          msgUserRef = {
-            email: user.email,
-            uid: user.uid,
-            name: "user",
-          };
-          console.log(msgUserRef);
-          // user.state = "LoggedIn";
-          // console.log(user);
-        }
-      } else {
-        // console.log("Logged out user");
-        user = { loginState: "loggedOut" };
-        console.log(user);
-      }
-
       setCurrentUser(user);
       setLoading(false);
     });

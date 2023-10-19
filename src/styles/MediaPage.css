@@ -40,6 +40,7 @@
   align-items: center;
   font-family: "Oswald", sans-serif;
   font-weight: 500;
+  list-style-type: disc;
 }
 
 .media-rating-list li:first-child {

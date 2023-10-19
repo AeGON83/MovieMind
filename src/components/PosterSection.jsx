@@ -17,7 +17,7 @@ export default function PosterSection({ url, title, type }) {
     fetch(`https://api.themoviedb.org/3/${type}${url}`, apiReqOptions)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setPosterSectionList(response);
       })
       .catch((err) => console.error(err));

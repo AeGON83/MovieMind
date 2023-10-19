@@ -27,7 +27,7 @@ export default function SearchBar() {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setSearchAutocompleteList(response);
       })
       .catch((err) => console.error(err));
