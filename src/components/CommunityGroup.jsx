@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "./user/AuthContext";
 
@@ -6,6 +6,18 @@ export default function CommunityGroup() {
   let { currentUser } = useAuth();
   const [msgData, setMsgData] = useState({ message: "Hello from the server!" });
   const { communityName } = useParams();
+  const messageSectionRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (messageSectionRef.current) {
+      console.log(
+        messageSectionRef.current.scrollTop,
+        messageSectionRef.current.scrollHeight
+      );
+      messageSectionRef.current.scrollTop =
+        messageSectionRef.current.scrollHeight;
+    }
+  };
 
   const navigate = useNavigate();
   const navigateToHomepage = () => {
@@ -72,14 +84,7 @@ export default function CommunityGroup() {
           time: formatDateAndTime(new Date()),
         }),
       });
-
-      // if (response.ok) {
-      //   console.log("Data added successfully");
-      //   // You can update your UI or show a success message here
-      // } else {
-      //   console.error("Error adding data");
-      //   // Handle the error appropriately
-      // }
+      scrollToBottom();
     } catch (error) {
       console.error("Network error:", error);
       // Handle network errors
@@ -120,18 +125,19 @@ export default function CommunityGroup() {
               <div className="community-chat-logo"></div>
               <p>{communityName}</p>
             </div>
-            <div className="chat-msg-container">
+            <div className="chat-msg-container" ref={messageSectionRef}>
               {/* <SingleMessage />
           <SingleMessage />
           <SingleMessage /> */}
               {msgData.length > 0 &&
                 msgData
                   .filter((item) => item.name == communityName)[0]
-                  .msgs.map((item) => {
-                    console.log(item);
+                  .msgs.map((item, index) => {
+                    // console.log(item);
                     return (
                       <SingleMessage
-                        key={item.uid}
+                        name={item.name}
+                        key={item.uid + index}
                         msg={item.msg}
                         time={item.time}
                         side={
@@ -149,7 +155,7 @@ export default function CommunityGroup() {
                 onChange={handleInputChange}
                 placeholder="Enter Message"
               />
-              <button onClick={handlePostRequest}>Submit</button>
+              <button onClick={handlePostRequest}></button>
             </div>
           </div>
         </div>
@@ -186,11 +192,17 @@ export default function CommunityGroup() {
   );
 }
 
-function SingleMessage({ msg, side, time }) {
+function SingleMessage({ msg, side, time, name }) {
   return (
     <div className={`msg ${side}`}>
       <span className="msg-text">{msg}</span>
       <p className="msg-time-stamp">{time}</p>
+      <p
+        className="msg-time-stamp"
+        style={{ display: `${side == "right-msg" ? "none" : "initial"}` }}
+      >
+        {name}
+      </p>
     </div>
   );
 }

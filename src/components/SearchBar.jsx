@@ -3,7 +3,7 @@ import Badge from "./Badge";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
-  const [toggleSearchType, setToggleSearchType] = useState(true);
+  // const [toggleSearchType, setToggleSearchType] = useState(true);
   const [searchAutocompleteList, setSearchAutocompleteList] = useState({});
   const [queryString, setQueryString] = useState("");
   const [selectedMedia, setSelectedMedia] = useState({
@@ -162,11 +162,11 @@ export default function SearchBar() {
             }}
           />
           <label className="search-bar-switch">
-            <input
+            {/* <input
               type="checkbox"
               checked={toggleSearchType}
               onChange={() => setToggleSearchType((oldState) => !oldState)}
-            />
+            /> */}
             <span className="slider round"></span>
           </label>
           <button
@@ -174,7 +174,7 @@ export default function SearchBar() {
             className="search-bar-btn normal-button"
             onClick={searchMedia}
           >
-            {toggleSearchType ? "AI " : "Normal "}Search
+            Search
           </button>
           {selectedMedia.showSuggestions && queryString != "" && (
             <ul
