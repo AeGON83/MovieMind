@@ -7,11 +7,11 @@ import CommunityPage from "./CommunityPage";
 
 export default function () {
   const sections = [
-    { type: "/movie", url: "/now_playing", title: "popular" },
-    { type: "/movie", url: "/top_rated", title: "top rated" },
-    { type: "/movie", url: "/upcoming", title: "upcoming" },
-    { type: "/tv", url: "/top_rated", title: "top rated" },
-    { type: "/movie", url: "/popular", title: "popular" },
+    { type: "movie", url: "/now_playing", title: "popular" },
+    { type: "movie", url: "/top_rated", title: "top rated" },
+    { type: "movie", url: "/upcoming", title: "upcoming" },
+    { type: "tv", url: "/top_rated", title: "top rated" },
+    { type: "movie", url: "/popular", title: "popular" },
   ];
 
   return (

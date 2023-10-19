@@ -17,6 +17,7 @@ import CommunityPage from "./components/CommunityPage";
 import CommunityGroup from "./components/CommunityGroup";
 import Player from "./components/Player";
 import CollectionPage from "./components/CollectionPage";
+import UserDataLists from "./components/UserDataList";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             path="/community/:communityName"
             element={<CommunityGroup />}
           />
+          <Route path="/user/:dataType" element={<UserDataLists />} />
         </Routes>
       </AuthProvider>
     </Router>

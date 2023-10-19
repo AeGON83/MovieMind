@@ -28,6 +28,8 @@
 .chat-container-main {
   width: 75%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: cadetblue;
   background: url(../assets/chat-bg.jpg);
   background-size: cover;
@@ -56,4 +58,84 @@
   letter-spacing: 2px;
   font-family: "Tilt Neon", sans-serif;
   padding-left: 20px;
+}
+
+.msg-sender {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.msg-sender input {
+  all: unset;
+  height: 60px;
+  width: 85%;
+  padding-left: 20px;
+  background-color: var(--primary-background-color);
+  border-radius: 50px 0 0 50px;
+}
+
+.msg-sender input::placeholder {
+  color: rgba(255, 255, 255, 0.777);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.msg-sender button {
+  all: unset;
+  text-align: center;
+  height: 60px;
+  border-radius: 0 50px 50px 0;
+  width: 10%;
+  cursor: pointer;
+  background-color: darkslateblue;
+}
+
+/* single message css */
+
+.chat-msg-container {
+  height: calc(100% - 120px);
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.msg {
+  color: #000;
+  display: inline;
+  /* clear: both; */
+  line-height: 28px;
+  font-size: 23px;
+  padding: 8px;
+  max-width: 75%;
+  word-wrap: normal;
+  z-index: 2;
+  /* border: 0.15vw solid #777; */
+  /* background-color: #fff; */
+  /* padding-top: 10px; */
+}
+.left-msg {
+  align-self: flex-start;
+  border-radius: 0px 1.5vw 1.5vw 1.8vw;
+  margin-left: 20px;
+  border: 0.15vw solid;
+  border-color: rgb(118, 168, 19);
+  color: white;
+}
+
+.right-msg {
+  background-color: rgb(118, 168, 19);
+  color: white;
+  margin-right: 20px;
+  align-self: flex-end;
+  border-radius: 1.5vw 0px 1.5vw 1.8vw;
+}
+.msg-text {
+  font-family: "Tilt Neon", sans-serif;
+  color: inherit;
+  padding: 0 10px;
 }

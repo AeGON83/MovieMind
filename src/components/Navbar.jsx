@@ -24,7 +24,7 @@ export default function Navbar({ navStyle }) {
           <li onClick={() => navigate("/MovieSection")}>Moveis</li>
           <li onClick={() => navigate("/TvSection")}>Web Series</li>
           <li onClick={() => navigate("/community")}>Community</li>
-          <li>Favorites</li>
+          <li onClick={() => navigate("/user/favorites")}>Favorites</li>
         </ul>
         <div className="navbar-buttons-wrapper">
           <button className="normal-button" id="signin-button">

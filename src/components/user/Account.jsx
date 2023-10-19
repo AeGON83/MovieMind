@@ -34,20 +34,7 @@ export default function Dashboard() {
             {currentUser.email}
           </p>
 
-          <div
-            className="userimage"
-            style={{
-              display: "flex",
-              position: "absolute",
-              right: "0",
-              top: "10%",
-              marginRight: "10%",
-              borderRadius: "50%",
-              height: "125px",
-              width: "125px",
-              border: "1px solid",
-            }}
-          ></div>
+          <div className="userimage"></div>
         </div>
 
         <div
@@ -94,7 +81,7 @@ export default function Dashboard() {
           >
             <div>
               <div className="icon-button rat-btn"></div>
-              <label htmlFor="">favorites</label>
+              <label htmlFor="">Ratings</label>
             </div>
           </div>
         </div>

@@ -28,38 +28,19 @@ export default function CollectionPage() {
   }, [id]); // Make sure to include id as a dependency in the useEffect dependency array
 
   return (
-    <div className="main-wrapper" style={{ width: "100%", height: "100vh" }}>
+    <div className="main-wrapper">
       <Navbar />
       <img
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: "-10",
-          opacity: "0.5",
-        }}
+        className="collection-img"
         src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
         alt=""
       />
-      <div
-        style={{
-          display: "flex",
-          position: "absolute",
-          overflowY: "scroll",
-          // height: "100%",
-
-          // flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          // backgroundColor:"black"
-        }}
-      >
+      <div className="movies-slider-containar">
         <div
           className="movies-slides"
           style={{
             position: "relative",
-            // transform:"translateY(200%)",
+
             justifyContent: "center",
             width: "100%",
             height: "fit-content",

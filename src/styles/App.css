@@ -17,6 +17,7 @@
 @import url("./Filters.css");
 @import url("./MovieTabs.css");
 @import url("./playe.css");
+@import url("./CollectionPage.css");
 
 :root {
   --primary-background-color: #0a0025;

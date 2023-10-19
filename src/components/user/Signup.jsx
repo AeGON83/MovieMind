@@ -12,9 +12,14 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (username.length < 4 || username.length > 20) {
+      return setError("Length of Name must be in range of 4-20 charecters");
+    }
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
@@ -23,7 +28,8 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      console.log("signup", username);
+      await signup(emailRef.current.value, passwordRef.current.value, username);
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -56,8 +62,13 @@ export default function Signup() {
 
         <input
           type="text"
+          name="username"
           className="form__input"
-          onChange={() => setError("")}
+          value={username}
+          onChange={(e) => {
+            setError("");
+            setUsername(e.target.value);
+          }}
           placeholder="abc"
         />
         <label className="label-text">Email</label>
