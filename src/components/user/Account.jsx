@@ -3,10 +3,15 @@
 import React, { useState } from "react";
 import { useAuth } from "../user/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+
+  const favorites = "Favorites";
+  const Watchlist = "Watchlist";
+  const Ratings = "Ratings";
 
   const navigate = useNavigate();
 
@@ -21,8 +26,20 @@ export default function Dashboard() {
     }
   }
 
+  function navigateTofavorites() {
+    console.log("feveff");
+    navigate(`/user/${favorites}`);
+  }
+  function navigateToWatchList() {
+    navigate(`/user/${Watchlist}`);
+  }
+  function navigateToRatings() {
+    navigate(`/user/${Ratings}`);
+  }
+
   return (
     <div className="signin-page-container">
+      <Navbar />
       <div className="signin-page-main">
         <div>
           <h2 className="form_title title">User Profile</h2>
@@ -47,41 +64,50 @@ export default function Dashboard() {
         >
           <div
             className="category-box"
+            onClick={navigateTofavorites}
             style={{
+              cursor: "pointer",
               display: "flex",
               justifyContent: "center",
               paddingTop: "30px",
+              zIndex: "100",
             }}
           >
             <div>
               <div className="icon-button acc-heart-btn"></div>
-              <label htmlFor="">Favorites</label>
+              <label htmlFor="">{favorites}</label>
             </div>
           </div>
           <div
             className="category-box"
             style={{
+              cursor: "pointer",
               display: "flex",
               justifyContent: "center",
               paddingTop: "30px",
+              zIndex: "100",
             }}
+            onClick={navigateToWatchList}
           >
             <div>
               <div className="icon-button acc-bookmark-btn"></div>
-              <label htmlFor="">Watchlist</label>
+              <label htmlFor="">{Watchlist}</label>
             </div>
           </div>
           <div
             className="category-box"
             style={{
+              cursor: "pointer",
               display: "flex",
               justifyContent: "center",
               paddingTop: "30px",
+              zIndex: "100",
             }}
+            onClick={navigateToRatings}
           >
             <div>
               <div className="icon-button rat-btn"></div>
-              <label htmlFor="">Ratings</label>
+              <label htmlFor="">{Ratings}</label>
             </div>
           </div>
         </div>

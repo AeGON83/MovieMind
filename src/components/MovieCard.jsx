@@ -61,7 +61,7 @@ export default function MovieCard(props) {
               {first_air_date}
             </li>
             <li>{vote_average}</li>
-            <li>Action</li>
+            {/* <li>Action</li> */}
           </ul>
           <div className="movie-card-right-review">
             <p>{overview}</p>

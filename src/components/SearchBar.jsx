@@ -161,14 +161,14 @@ export default function SearchBar() {
               });
             }}
           />
-          <label className="search-bar-switch">
-            {/* <input
+          {/* <label className="search-bar-switch">
+            <input
               type="checkbox"
               checked={toggleSearchType}
               onChange={() => setToggleSearchType((oldState) => !oldState)}
-            /> */}
+            />
             <span className="slider round"></span>
-          </label>
+          </label> */}
           <button
             type="submit"
             className="search-bar-btn normal-button"

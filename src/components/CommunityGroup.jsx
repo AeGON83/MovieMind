@@ -10,10 +10,6 @@ export default function CommunityGroup() {
 
   const scrollToBottom = () => {
     if (messageSectionRef.current) {
-      console.log(
-        messageSectionRef.current.scrollTop,
-        messageSectionRef.current.scrollHeight
-      );
       messageSectionRef.current.scrollTop =
         messageSectionRef.current.scrollHeight;
     }
@@ -66,13 +62,6 @@ export default function CommunityGroup() {
       return;
     }
 
-    // setPostMsgData((old) => {
-    //   return {
-    //     ...old,
-    //     time: formatDateAndTime(new Date()),
-    //   };
-    // });
-
     try {
       await fetch("http://localhost:5000/add-to-array", {
         method: "POST",
@@ -87,7 +76,6 @@ export default function CommunityGroup() {
       scrollToBottom();
     } catch (error) {
       console.error("Network error:", error);
-      // Handle network errors
     }
   };
 
@@ -104,6 +92,8 @@ export default function CommunityGroup() {
       socket.close();
     };
   }, []);
+
+  useEffect(() => scrollToBottom(), [msgData]);
 
   return (
     <div className="check-login">

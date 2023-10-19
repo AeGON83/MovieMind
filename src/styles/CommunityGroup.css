@@ -28,6 +28,8 @@
 .chat-container-main {
   width: 75%;
   height: 100vh;
+  overflow: hidden;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
   background-color: cadetblue;
@@ -40,6 +42,7 @@
   width: 100%;
   height: 60px;
   display: flex;
+  padding: 5px 0;
   align-items: center;
   background-color: rgba(30, 25, 57, 0.7);
   backdrop-filter: blur(2px);
@@ -47,6 +50,7 @@
 .community-chat-logo {
   width: 50px;
   height: 50px;
+  /* overflow: hidden; */
   background-color: grey;
   border-radius: 50%;
   margin-left: 20px;
@@ -62,17 +66,18 @@
 
 .msg-sender {
   height: 60px;
+  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   width: 100%;
   gap: 1%;
-  padding-bottom: 75px;
+  /* padding-bottom: 75px; */
 }
 
 .msg-sender input {
   all: unset;
   height: 60px;
-  width: 80%;
+  width: calc(90% - 60px - 1%);
   padding-left: 20px;
   background-color: #2f3425;
   border-radius: 50px;
@@ -90,10 +95,9 @@
   all: unset;
   text-align: center;
   height: 60px;
+  width: 60px;
   border-radius: 0 50px 50px 0;
-  width: 10%;
   cursor: pointer;
-
   background: url("../assets/icons/forward-icon.svg");
   background-color: #76a518;
   border-radius: 50px;
@@ -106,7 +110,7 @@
 /* single message css */
 
 .chat-msg-container {
-  height: calc(100% - 120px);
+  height: calc(100%);
   margin-bottom: 20px;
   width: 100%;
   padding-top: 20px;
@@ -139,6 +143,7 @@
   border: 2.5px solid;
   border-color: rgb(118, 168, 19);
   color: white;
+  margin-top: 20px;
 }
 
 .right-msg {
@@ -173,6 +178,7 @@
   right: 0;
   left: unset;
   text-align: right;
+  font-family: "Tilt Neon", sans-serif;
 }
 
 .msg .msg-time-stamp:nth-child(2) {
@@ -183,7 +189,6 @@
 .msg:hover .msg-time-stamp:nth-child(2) {
   opacity: 1;
   transform: translate(0);
-  font-family: "Tilt Neon", sans-serif;
 }
 .msg .msg-time-stamp:nth-child(3) {
   opacity: 1;
