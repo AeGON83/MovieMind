@@ -14,16 +14,16 @@ export default function UpdateProfile() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(
-      "Current password:",
-      currentPasswordRef.current.value,
-      typeof currentPasswordRef.current.value
-    );
-    console.log(
-      "New password:",
-      passwordRef.current.value,
-      typeof passwordRef.current.value
-    );
+    // console.log(
+    //   "Current password:",
+    //   currentPasswordRef.current.value,
+    //   typeof currentPasswordRef.current.value
+    // );
+    // console.log(
+    //   "New password:",
+    //   passwordRef.current.value,
+    //   typeof passwordRef.current.value
+    // );
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");

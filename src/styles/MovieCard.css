@@ -71,7 +71,7 @@
   -moz-border-radius: 0 10px 10px 0;
   z-index: -1;
   border-left: none;
-  background-color: rgb(24, 6, 76);
+  background-color: var(--primary-background-color);
   background-image: radial-gradient(
     90.68% 92.96% at 9.32% 7.04%,
     rgb(24, 6, 76, 0) 0%,

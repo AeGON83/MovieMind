@@ -73,6 +73,9 @@ export default function CommunityGroup() {
           time: formatDateAndTime(new Date()),
         }),
       });
+      setPostMsgData((old) => {
+        return { ...old, msg: "" };
+      });
       scrollToBottom();
     } catch (error) {
       console.error("Network error:", error);
@@ -143,6 +146,11 @@ export default function CommunityGroup() {
                 value={postMsgData.msg}
                 name="msg"
                 onChange={handleInputChange}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handlePostRequest();
+                  }
+                }}
                 placeholder="Enter Message"
               />
               <button onClick={handlePostRequest}></button>

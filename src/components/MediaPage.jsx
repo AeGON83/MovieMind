@@ -1,6 +1,8 @@
 /** @format */
 
 import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Navbar from "./Navbar";
 import Badge from "./Badge";
 import Loading from "./Loading";
@@ -18,37 +20,88 @@ export default function MediaPage() {
   let { currentUser } = useAuth();
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isWatchListed, setIsWatchListed] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(0);
 
   const handleFavoriteClick = async () => {
-    try {
-      const itemId = id; // Replace this with the actual item ID
-      const itemType = type; // Replace this with the actual item type
-      const userId = currentUser.uid;
+    if (!currentUser) {
+      window.alert(
+        `Please Log in to your Account to Add This To Your Favorites`
+      );
+      return;
+    }
 
-      const response = await fetch("/api/addFavorite", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          itemId: itemId,
-          itemType: itemType,
-          userId: userId,
-        }),
+    try {
+      let itemToAdd = { id, type };
+      let fireBaseUid = currentUser.uid;
+      const response = await axios.post(
+        "http://localhost:5000/add-to-favorites",
+        {
+          fireBaseUid,
+          itemToAdd,
+          isFavorite,
+        }
+      );
+
+      // Handle success
+      setIsFavorite((old) => {
+        return response.data.isAdded ? !old : old;
+      });
+    } catch (error) {
+      // Handle error
+      console.error(error);
+    }
+  };
+  const handleBookmarkClick = async () => {
+    if (!currentUser) {
+      window.alert(
+        `Please Log in to your Account to Add this to Your WatchList`
+      );
+      return;
+    }
+    try {
+      let itemToAdd = { id, type };
+      let fireBaseUid = currentUser.uid;
+      const response = await axios.post(
+        "http://localhost:5000/add-to-watchlist",
+        {
+          fireBaseUid,
+          itemToAdd,
+          isWatchListed,
+        }
+      );
+
+      // Handle success
+      // console.log(response);
+      setIsWatchListed((old) => {
+        return response.data.isAdded ? !old : old;
+      });
+    } catch (error) {
+      // Handle error
+      console.error(error);
+    }
+  };
+
+  const handleRateClick = async (value) => {
+    if (!currentUser) {
+      window.alert(`Please Log in to your Account to Rate this Movie`);
+      return;
+    }
+    try {
+      let itemToAdd = { id, type, selectedRating: value };
+      let fireBaseUid = currentUser.uid;
+      const response = await axios.post("http://localhost:5000/rate-media", {
+        fireBaseUid,
+        itemToAdd,
       });
 
-      if (response.ok) {
-        // Handle success, e.g., update local state to reflect the change
-        setIsFavorite(true);
-        console.log("Item added to favorites successfully!");
-      } else {
-        // Handle errors, e.g., show an error message to the user
-        console.error("Failed to add item to favorites.");
-      }
+      // Handle success
+      setSelectedRating(response.data.updatedTo);
     } catch (error) {
-      // Handle network errors or other exceptions
-      console.error("Error occurred:", error);
+      // Handle error
+      console.error(error);
     }
+    // setSelectedRating(value);
   };
 
   useEffect(() => {
@@ -66,9 +119,32 @@ export default function MediaPage() {
       .then((response) => response.json())
       .then((response) => {
         setMediaData(response);
-        console.log(response);
+        // console.log(response);
       })
       .catch((err) => console.error(err));
+
+    // search already saved data
+    if (currentUser) {
+      axios
+        .get("http://localhost:5000/search-media-data", {
+          params: {
+            fireBaseUid: currentUser.uid,
+            id: id,
+            type: type,
+          },
+        }) // Replace with your API endpoint
+        .then((response) => {
+          // setData(response.data);
+          // console.log(response.data);
+
+          setIsFavorite(response.data.favorited);
+          setIsWatchListed(response.data.watchlisted);
+          setSelectedRating(response.data.rated);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -241,45 +317,167 @@ export default function MediaPage() {
               </ul>
               <p className="media-overview">{data.overview}</p>
               <div className="media-page-actions">
-                <a
-                  href={`/play/${id}`}
+                <Link
+                  to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
+                  // to={`/play/${id}`}
+
                   target="_blank"
                   className="normal-button media-page-play-btn"
                 >
                   <img src={whitePlayIcon} alt="" />
                   WATCH
-                </a>
-                <button className="icon-button bookmark-btn "></button>
+                </Link>
                 <button
-                  className={`icon-button heart-btn favorite ${
-                    isFavorite ? "active" : ""
+                  className={`icon-button ${
+                    isWatchListed ? "bookmark-btn-selected" : "bookmark-btn"
+                  } `}
+                  onClick={() => {
+                    handleBookmarkClick();
+                  }}
+                ></button>
+                <button
+                  className={`icon-button ${
+                    isFavorite ? "heart-btn-selected " : "heart-btn"
                   }`}
-                  onClick={handleFavoriteClick}
+                  onClick={() => {
+                    handleFavoriteClick();
+                  }}
                 >
                   {/* You can customize the button icon based on the favorite status */}
                   {/* {isFavorite ? "Added to Favorites" : "Add to Favorites"} */}
                 </button>
-                <div class="rating">
-                  <input value="10" name="rating" id="star10" type="radio" />
-                  <label for="star10"></label>
-                  <input value="9" name="rating" id="star9" type="radio" />
-                  <label for="star9"></label>
-                  <input value="8" name="rating" id="star8" type="radio" />
-                  <label for="star8"></label>
-                  <input value="7" name="rating" id="star7" type="radio" />
-                  <label for="star7"></label>
-                  <input value="6" name="rating" id="star6" type="radio" />
-                  <label for="star6"></label>
-                  <input value="5" name="rating" id="star5" type="radio" />
-                  <label for="star5"></label>
-                  <input value="4" name="rating" id="star4" type="radio" />
-                  <label for="star4"></label>
-                  <input value="3" name="rating" id="star3" type="radio" />
-                  <label for="star3"></label>
-                  <input value="2" name="rating" id="star2" type="radio" />
-                  <label for="star2"></label>
-                  <input value="1" name="rating" id="star1" type="radio" />
-                  <label for="star1"></label>
+                <div className="rating">
+                  <label
+                    htmlFor="star1"
+                    className={selectedRating >= 10 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(10)}
+                  ></label>
+                  <label
+                    htmlFor="star2"
+                    className={selectedRating >= 9 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(9)}
+                  ></label>
+                  <label
+                    htmlFor="star3"
+                    className={selectedRating >= 8 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(8)}
+                  ></label>
+                  <label
+                    htmlFor="star4"
+                    className={selectedRating >= 7 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(7)}
+                  ></label>
+                  <label
+                    htmlFor="star5"
+                    className={selectedRating >= 6 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(6)}
+                  ></label>
+                  <label
+                    htmlFor="star6"
+                    className={selectedRating >= 5 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(5)}
+                  ></label>
+                  <label
+                    htmlFor="star7"
+                    className={selectedRating >= 4 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(4)}
+                  ></label>
+                  <label
+                    htmlFor="star8"
+                    className={selectedRating >= 3 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(3)}
+                  ></label>
+                  <label
+                    htmlFor="star9"
+                    className={selectedRating >= 2 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(2)}
+                  ></label>
+                  <label
+                    htmlFor="star10"
+                    className={selectedRating >= 1 ? "in-rate-range" : ""}
+                    onClick={() => handleRateClick(1)}
+                  ></label>
+
+                  {/* <input
+                    value="10"
+                    name="rating"
+                    id="star10"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star10"></label>
+                  <input
+                    value="9"
+                    name="rating"
+                    id="star9"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star9"></label>
+                  <input
+                    value="8"
+                    name="rating"
+                    id="star8"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star8" ></label>
+                  <input
+                    value="7"
+                    name="rating"
+                    id="star7"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star7"></label>
+                  <input
+                    value="6"
+                    name="rating"
+                    id="star6"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star6"></label>
+                  <input
+                    value="5"
+                    name="rating"
+                    id="star5"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star5"></label>
+                  <input
+                    value="4"
+                    name="rating"
+                    id="star4"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star4"></label>
+                  <input
+                    value="3"
+                    name="rating"
+                    id="star3"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star3"></label>
+                  <input
+                    value="2"
+                    name="rating"
+                    id="star2"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star2"></label>
+                  <input
+                    value="1"
+                    name="rating"
+                    id="star1"
+                    type="radio"
+                    onClick={handleRateClick}
+                  />
+                  <label htmlFor="star1"></label> */}
                 </div>
               </div>
             </div>

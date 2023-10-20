@@ -94,7 +94,7 @@ export default function CardSlider(props) {
     let maxScrollX =
       outerContainerRef.current.offsetWidth -
       innerContainerRef.current.offsetWidth;
-    console.log(transformPosition);
+    // console.log(transformPosition);
 
     // if (!isPaused) {
     //   innerContainerRef.current.style.animationPlayState = "paused";
@@ -112,7 +112,7 @@ export default function CardSlider(props) {
       return;
     }
     setTransformPosition(transformPosition + scrollAmount);
-    console.log(transformPosition);
+    // console.log(transformPosition);
   };
   const totalCards = data ? data.length : 0;
 

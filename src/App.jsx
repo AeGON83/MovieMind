@@ -35,6 +35,7 @@ function App() {
           <Route path="/media/:type/:id" element={<MediaPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/play/:id" element={<Player />} />
+
           <Route path="/Collection/:id" element={<CollectionPage />} />
           <Route
             path="/community/:communityName"

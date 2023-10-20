@@ -22,7 +22,7 @@ export default function CollectionPage() {
       .then((response) => response.json())
       .then((response) => {
         setData(response);
-        console.log(response);
+        // console.log(response);
       })
       .catch((err) => console.error(err));
   }, [id]); // Make sure to include id as a dependency in the useEffect dependency array

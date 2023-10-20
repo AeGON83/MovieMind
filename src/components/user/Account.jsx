@@ -9,9 +9,9 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
 
-  const favorites = "Favorites";
-  const Watchlist = "Watchlist";
-  const Ratings = "Ratings";
+  const favorites = "favorites";
+  const Watchlist = "watchList";
+  const Ratings = "ratings";
 
   const navigate = useNavigate();
 
@@ -27,7 +27,6 @@ export default function Dashboard() {
   }
 
   function navigateTofavorites() {
-    console.log("feveff");
     navigate(`/user/${favorites}`);
   }
   function navigateToWatchList() {

@@ -21,10 +21,12 @@ export default function Navbar({ navStyle }) {
         </div>
 
         <ul className="navbar-items">
+          <li onClick={() => navigate("/community")}>Community</li>
           <li onClick={() => navigate("/MovieSection")}>Moveis</li>
           <li onClick={() => navigate("/TvSection")}>Web Series</li>
-          <li onClick={() => navigate("/community")}>Community</li>
+          <li onClick={() => navigate("/DiscoverPage/28")}>Discover</li>
           <li onClick={() => navigate("/user/favorites")}>Favorites</li>
+          <li onClick={() => navigate("/user/watchList")}>Watchlist</li>
         </ul>
         <div className="navbar-buttons-wrapper">
           <button className="normal-button" id="signin-button">

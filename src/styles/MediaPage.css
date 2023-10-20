@@ -121,18 +121,27 @@
 .bookmark-btn {
   background: url(../assets/icons/bookmark-empty.svg);
 }
-.bookmark-btn:hover {
+
+.bookmark-btn-selected {
   background: url(../assets/icons/bookmark-filled.svg);
 }
+/* .bookmark-btn:hover {
+  background: url(../assets/icons/bookmark-filled.svg);
+} */
 
 .heart-btn {
   background: url(../assets/icons/heart-empty.svg);
 }
 
-.heart-btn:hover {
+.heart-btn-selected {
+  background: url(../assets/icons/heart-filled.svg);
+}
+
+/* .heart-btn:hover {
   background: url(../assets/icons/heart-filled.svg);
   scale: 1.1;
-}
+} */
+
 .icon-button {
   width: 40px;
   height: 40px;
@@ -140,6 +149,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
+  border: none;
   transition: 0.3s ease-in-out;
 }
 
@@ -199,10 +209,6 @@
   display: inline-block;
 }
 
-.rating input {
-  display: none;
-}
-
 .rating label {
   float: right;
   cursor: pointer;
@@ -215,9 +221,13 @@
   font-size: 30px;
 }
 
-.rating input:checked ~ label,
 .rating label:hover,
 .rating label:hover ~ label {
+  color: var(--primary-font-color-4);
+  transition: color 0.3s;
+}
+
+.rating .in-rate-range {
   color: var(--primary-font-color-4);
   transition: color 0.3s;
 }

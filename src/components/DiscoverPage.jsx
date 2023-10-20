@@ -8,7 +8,7 @@ import MovieCard from "./MovieCard";
 import Navbar from "./Navbar";
 const type = "movie";
 
-export default function DiscoverPage(props) {
+export default function DiscoverPage() {
   const { id: genreId } = useParams();
 
   const [discoverDataList, setDiscoverDataList] = useState({});
@@ -68,7 +68,7 @@ export default function DiscoverPage(props) {
         sortOption = "&sort_by=primary_release_date.desc";
       }
       setNewSortbyUrl(sortOption);
-      console.log("Updated Checkboxes:", updatedCheckboxes, sortOption);
+      // console.log("Updated Checkboxes:", updatedCheckboxes, sortOption);
       return updatedCheckboxes;
     });
   };
@@ -187,7 +187,7 @@ export default function DiscoverPage(props) {
     fetch(apiUrl, apiReqOptions)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setDiscoverDataList(response);
       })
       .catch((err) => console.error(err));
@@ -201,9 +201,9 @@ export default function DiscoverPage(props) {
           <div className="filters-containar">
             <h2 className="filter-containar-title">Filters</h2>
             <ul className="filter-list">
-              <h3 className="filter-list-category-title">category</h3>
+              <h3 className="filter-list-category-title">Category</h3>
               <li className="filter-list-item">
-                <label htmlFor="checkbox1">include_adult</label>
+                <label htmlFor="checkbox1">Include Adult</label>
                 <label className="search-bar-switch">
                   <input
                     type="checkbox"
@@ -235,7 +235,7 @@ export default function DiscoverPage(props) {
               </li>
               <li className="filter-list-item">
                 <label htmlFor="" className="filter-input-lable">
-                  year
+                  Year
                 </label>
                 <input
                   type="number"
@@ -259,7 +259,7 @@ export default function DiscoverPage(props) {
                     checked={checkboxes.checkbox1}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span>revenue</span>
+                  <span>Revenue</span>
                 </label>
                 <label className="desc-arrow">
                   <input
@@ -281,7 +281,7 @@ export default function DiscoverPage(props) {
                     checked={checkboxes.checkbox2}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span>popularity</span>
+                  <span>Popularity</span>
                 </label>
                 <label className="desc-arrow">
                   <input
@@ -303,7 +303,7 @@ export default function DiscoverPage(props) {
                     checked={checkboxes.checkbox3}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span>vote count</span>
+                  <span>Vote Count</span>
                 </label>
                 <label className="desc-arrow">
                   <input
@@ -326,7 +326,7 @@ export default function DiscoverPage(props) {
                     checked={checkboxes.checkbox4}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span>vote average</span>
+                  <span>Vote Average</span>
                 </label>
                 <label className="desc-arrow">
                   <input
@@ -349,7 +349,7 @@ export default function DiscoverPage(props) {
                     checked={checkboxes.checkbox5}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span>primary release date</span>
+                  <span>Primary Release Date</span>
                 </label>
                 <label className="desc-arrow">
                   <input

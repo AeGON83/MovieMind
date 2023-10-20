@@ -19,9 +19,12 @@ export default function MovieCard(props) {
   } = props;
 
   const [showDetails, setShowDetails] = React.useState(false);
+  function sanitizePath(path) {
+    return path.replace(/\/+/g, "/");
+  }
 
   function navigateToMediaPage() {
-    navigate(`/media/${type}/${id}`);
+    navigate(sanitizePath(`/media/${type}/${id}`));
   }
 
   return (
@@ -70,9 +73,15 @@ export default function MovieCard(props) {
             </a>
           </div>
           <div className="movie-card-right-button">
-            <a href={`/play/${id}`} target="_blank">
+            <Link
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
+              target="_blank"
+            >
               WATCH
-            </a>
+            </Link>
           </div>
         </div>
       </div>
