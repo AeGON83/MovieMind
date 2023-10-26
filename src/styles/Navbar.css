@@ -5,19 +5,23 @@
   align-items: center;
 }
 
+
+
 .navbar-wrapper {
   display: flex;
-  justify-content: space-between;
   width: 100%;
+  justify-content: space-between;
   align-items: center;
 }
 
 .navbar-title,
 .navbar-items,
 .normal-button {
+
   display: inline-block;
   cursor: pointer;
 }
+
 .navbar-title {
   margin-left: 4%;
   display: flex;
@@ -52,6 +56,25 @@
 #login-button {
   border: none;
 }
+
+ .navbar-items .community-img {
+    display: inline-block;
+      border: 1px solid red;
+      height: 20px;
+      min-width: 20px;
+      width: 20px;
+      z-index: auto;
+      background: url(../assets/icons/home-menu-community-svgrepo-com.svg);
+    }
+
+   .navbar-items span {
+      letter-spacing: 1.42px;
+      line-height: 1.08;
+      padding: 2px 0px;
+      white-space: nowrap;
+      position: relative;
+   }
+   
 
 #signin-button {
   border-color: var(--primary-font-color-3);

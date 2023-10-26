@@ -28,63 +28,70 @@ export default function MovieCard(props) {
   }
 
   return (
-    <div className="movie-card" onClick={navigateToMediaPage}>
-      <div
-        className="movie-card-left"
-        onMouseOver={() => {
-          setShowDetails(true);
-          //   pauseScrollAnimation();
-        }}
-        onMouseLeave={() => {
-          setShowDetails(false);
-          //   resumeScrollAnimation();
-        }}
-      >
-        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
-      </div>
-      <div
-        className={`movie-card-right ${showDetails ? "show-card-details" : ""}`}
-        onMouseOver={() => {
-          setShowDetails(true);
-          //   pauseScrollAnimation();
-        }}
-        onMouseLeave={() => {
-          setShowDetails(false);
-          //   resumeScrollAnimation();
-        }}
-      >
-        <p className="movie-card-title">
-          {title}
-          {name}
-        </p>
-        <div className="movie-card-right-details">
-          <ul>
-            <li>
-              {release_date}
-              {first_air_date}
-            </li>
-            <li>{vote_average}</li>
-            {/* <li>Action</li> */}
-          </ul>
-          <div className="movie-card-right-review">
-            <p>{overview}</p>
-            <a href="" target="_blank">
-              Read more
-            </a>
-          </div>
-          <div className="movie-card-right-button">
-            <Link
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
-              target="_blank"
-            >
-              WATCH
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+		<div
+			className='movie-card'
+			onClick={navigateToMediaPage}
+		>
+			<div
+				className='movie-card-left'
+				onMouseOver={() => {
+					setShowDetails(true);
+					//   pauseScrollAnimation();
+				}}
+				onMouseLeave={() => {
+					setShowDetails(false);
+					//   resumeScrollAnimation();
+				}}
+			>
+				<img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
+			</div>
+			<div
+				className={`movie-card-right ${showDetails ? "show-card-details" : ""}`}
+				onMouseOver={() => {
+					setShowDetails(true);
+					//   pauseScrollAnimation();
+				}}
+				onMouseLeave={() => {
+					setShowDetails(false);
+					//   resumeScrollAnimation();
+				}}
+			>
+				<p className='movie-card-title'>
+					{title}
+					{name}
+				</p>
+				<div className='movie-card-right-details'>
+					<ul>
+						<li>
+							{release_date}
+							{first_air_date}
+						</li>
+						<li>{vote_average}</li>
+				
+					</ul>
+					<div className='movie-card-right-review'>
+						<p>{overview}</p>
+						<a
+							href=''
+							target='_blank'
+						>
+							Read more
+						</a>
+					</div>
+					<div className='movie-card-right-button'>
+						<Link
+							onClick={(e) => {
+								e.stopPropagation();
+							}}
+							
+							to={`/player/${id}`}
+							target='_blank'
+						>
+							WATCH
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

@@ -119,7 +119,7 @@ export default function MediaPage() {
       .then((response) => response.json())
       .then((response) => {
         setMediaData(response);
-        // console.log(response);
+        console.log(response);
       })
       .catch((err) => console.error(err));
 
@@ -318,8 +318,8 @@ export default function MediaPage() {
               <p className="media-overview">{data.overview}</p>
               <div className="media-page-actions">
                 <Link
-                  to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
-                  // to={`/play/${id}`}
+                  // to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
+                  to={`/player/${id}`}
 
                   target="_blank"
                   className="normal-button media-page-play-btn"

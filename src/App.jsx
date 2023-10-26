@@ -18,34 +18,79 @@ import CommunityGroup from "./components/CommunityGroup";
 import Player from "./components/Player";
 import CollectionPage from "./components/CollectionPage";
 import UserDataLists from "./components/UserDataList";
+import AboutUs from "./components/AboutUs";
 
 function App() {
+  // document.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
-    <Router>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/MovieSection" element={<MovieSection />} />
-          <Route path="/TvSection" element={<TvSection />} />
-          <Route path="/DiscoverPage/:id" element={<DiscoverPage />} />
-          <Route path="/update-profile" element={<UpdateProfile />} />
-          <Route path="/signup" element={<SignInPage />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/media/:type/:id" element={<MediaPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/play/:id" element={<Player />} />
+		<Router>
+			<AuthProvider>
+				<Routes>
+					<Route
+						path='/'
+						element={<Homepage />}
+					/>
+					<Route
+						path='/MovieSection'
+						element={<MovieSection />}
+					/>
+					<Route
+						path='/TvSection'
+						element={<TvSection />}
+					/>
+					<Route
+						path='/DiscoverPage/:id'
+						element={<DiscoverPage />}
+					/>
+					<Route
+						path='/update-profile'
+						element={<UpdateProfile />}
+					/>
+					<Route
+						path='/signup'
+						element={<SignInPage />}
+					/>
+					<Route
+						path='/forgot-password'
+						element={<ForgotPassword />}
+					/>
+					<Route
+						path='/account'
+						element={<Account />}
+					/>
+					<Route
+						path='/media/:type/:id'
+						element={<MediaPage />}
+					/>
+					<Route
+						path='/community'
+						element={<CommunityPage />}
+					/>
+					<Route
+						path='/player/:id'
+						element={<Player />}
+					/>
+					<Route
+						path='/AboutUs'
+						element={<AboutUs />}
+					/>
 
-          <Route path="/Collection/:id" element={<CollectionPage />} />
-          <Route
-            path="/community/:communityName"
-            element={<CommunityGroup />}
-          />
-          <Route path="/user/:dataType" element={<UserDataLists />} />
-        </Routes>
-      </AuthProvider>
-    </Router>
-  );
+					<Route
+						path='/Collection/:id'
+						element={<CollectionPage />}
+					/>
+					<Route
+						path='/community/:communityName'
+						element={<CommunityGroup />}
+					/>
+					<Route
+						path='/user/:dataType'
+						element={<UserDataLists />}
+					/>
+				</Routes>
+			</AuthProvider>
+		</Router>
+	);
 }
 
 export default App;

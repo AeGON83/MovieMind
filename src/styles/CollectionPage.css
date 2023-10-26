@@ -3,6 +3,10 @@
   height: 100vh;
 }
 
+*{
+  /* border: 1px solid red; */
+}
+
 .main-wrapper .collection-img {
   position: absolute;
   width: 100%;
@@ -13,8 +17,10 @@
 }
 
 .movies-slider-containar {
+  width: 100%;
   display: flex;
   position: absolute;
+  top: 20%;
   overflow-y: scroll;
   align-items: center;
   justify-content: center;

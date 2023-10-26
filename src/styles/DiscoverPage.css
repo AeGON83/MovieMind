@@ -14,23 +14,22 @@
 	align-items: center;
 	width: 25%;
 	border-right: 1px solid red;
-	  box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-    rgb(0 0 0/73%) 0px 16px 10px -10px;
+	box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+		rgb(0 0 0/73%) 0px 16px 10px -10px;
 	border-top-right-radius: 10px;
-	
-
 }
 
 .movies-slides {
 	height: 100%;
-	
+
 	margin: 20px;
-    padding-top: 14px;
+	padding-top: 14px;
+	padding-bottom: 50px !important;
 	display: flex;
 	row-gap: 30px;
 	column-gap: 0;
 	overflow: scroll;
-	width: 75% ;
+	width: 75%;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	background-color: rgb(24, 6, 76);
@@ -43,99 +42,96 @@
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  scale: 1.5;
-  margin: 0;
-  margin-right: 10px;
+	scale: 1.5;
+	margin: 0;
+	margin-right: 10px;
 }
 
 /* Create custom up and down arrows */
 input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
+	-moz-appearance: textfield; /* Firefox */
 }
 
 input[type="number"]::-webkit-inner-spin-button::before {
-  content: '\25B2'; /* Unicode character for up arrow */
-  padding-right: 5px; /* Adjust spacing as needed */
+	content: "\25B2"; /* Unicode character for up arrow */
+	padding-right: 5px; /* Adjust spacing as needed */
 }
 
 input[type="number"]::-webkit-inner-spin-button::after {
-  content: '\25BC'; /* Unicode character for down arrow */
-  padding-left: 5px; /* Adjust spacing as needed */
+	content: "\25BC"; /* Unicode character for down arrow */
+	padding-left: 5px; /* Adjust spacing as needed */
 }
 
 /* Basic styling for the select dropdown */
 select {
-    width: 150px; /* Set the width of the dropdown */
-    padding: 5px; /* Add some padding for better readability and click area */
-    border: 1px solid #ccc; /* Add a border for a distinct look */
-    border-radius: 5px; /* Optional: Rounded corners */
-    font-size: 16px; /* Set the font size */
-    background-color: #fff; /* Set the background color */
-    color: #333; /* Set the text color */
+	width: 150px; /* Set the width of the dropdown */
+	padding: 5px; /* Add some padding for better readability and click area */
+	border: 1px solid #ccc; /* Add a border for a distinct look */
+	border-radius: 5px; /* Optional: Rounded corners */
+	font-size: 16px; /* Set the font size */
+	background-color: #fff; /* Set the background color */
+	color: #333; /* Set the text color */
 }
 
 /* Style the dropdown arrow */
 select::-ms-expand {
-    display: none; /* Remove the default arrow in Internet Explorer */
+	display: none; /* Remove the default arrow in Internet Explorer */
 }
 
 /* Optional: Style the dropdown arrow for other browsers */
 select::after {
-    content: '\25BC'; /* Unicode character for a down arrow */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none; /* Ensure the arrow doesn't interfere with clicking the dropdown */
+	content: "\25BC"; /* Unicode character for a down arrow */
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	pointer-events: none; /* Ensure the arrow doesn't interfere with clicking the dropdown */
 }
-
 
 /* Basic styling for the options inside the dropdown */
 option {
-    background-color: #fff; /* Set the background color of each option */
-    color: #333; /* Set the text color of each option */
-    padding: 10px; /* Add padding for better readability and click area */
+	background-color: #fff; /* Set the background color of each option */
+	color: #333; /* Set the text color of each option */
+	padding: 10px; /* Add padding for better readability and click area */
 }
 
 /* Style the selected option */
 option:checked {
-    background-color: #007bff; /* Set a different background color for the selected option */
-    color: #fff; /* Set a different text color for the selected option */
+	background-color: #007bff; /* Set a different background color for the selected option */
+	color: #fff; /* Set a different text color for the selected option */
 }
-
 
 /*------ Settings ------*/
 .desc-arrow {
-  --color: #a5a5b0;
-  --size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  font-size: var(--size);
-  user-select: none;
-  fill: var(--color);
-  z-index: 100;
+	--color: #a5a5b0;
+	--size: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+	font-size: var(--size);
+	user-select: none;
+	fill: var(--color);
+	z-index: 100;
 }
 
 .desc-arrow .chevron-down {
-  position: absolute;
-  animation: keyframes-return .5s;
+	position: absolute;
+	animation: keyframes-return 0.5s;
 }
 
 /* ------ On check event ------ */
-.desc-arrow input:clied~ .chevron-down {
-  animation: keyframes-rotate .5s;
-  transform: rotate(180deg);
+.desc-arrow input:clied ~ .chevron-down {
+	animation: keyframes-rotate 0.5s;
+	transform: rotate(180deg);
 }
 
 /* ------ Hide the default checkbox ------ */
 .desc-arrow input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
 }
-

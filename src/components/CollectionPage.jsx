@@ -25,51 +25,60 @@ export default function CollectionPage() {
         // console.log(response);
       })
       .catch((err) => console.error(err));
-  }, [id]); // Make sure to include id as a dependency in the useEffect dependency array
+  }, [id]); 
 
   return (
-    <div className="main-wrapper">
-      <Navbar />
-      <img
-        className="collection-img"
-        src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-        alt=""
-      />
-      <div className="movies-slider-containar">
-        <div
-          className="movies-slides"
-          style={{
-            position: "relative",
+		<div className='main-wrapper'>
+			<Navbar
+				navStyle={{
+					height: "60px",
+					backgroundColor: "#01010177",
+					position: "absolute",
+					top: 0,
+					opacity: 1,
+					zIndex: 2,
+				}}
+			/>
+			<img
+				className='collection-img'
+				src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+				alt=''
+			/>
+			<div className='movies-slider-containar'>
+				<div
+					className='movies-slides'
+					style={{
+						position: "relative",
 
-            justifyContent: "center",
-            width: "100%",
-            height: "fit-content",
-            backgroundColor: "transparent",
-            top: "calc(100% - 275px)",
-            rowGap: "20px",
-            overflow: "hidden",
-          }}
-        >
-          {data.parts ? (
-            data.parts.map((item) => (
-              <MovieCard
-                key={item.id}
+						justifyContent: "center",
+						width: "100%",
+						height: "fit-content",
+						backgroundColor: "transparent",
+						top: "calc(100% - 275px)",
+					
+						
+					}}
+				>
+					{data.parts ? (
+						data.parts.map((item) => (
+							<MovieCard
                 id={item.id}
-                poster_path={item.poster_path}
-                title={item.title}
-                name={item.name}
-                overview={item.overview}
-                release_date={item.release_date}
-                first_air_date={item.first_air_date}
-                vote_average={item.vote_average}
-                type={item.media_type}
-              />
-            ))
-          ) : (
-            <p>No movies found</p>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+								key={item.id}
+								name={item.name}
+								title={item.title}
+								type={item.media_type}
+								overview={item.overview}
+								poster_path={item.poster_path}
+								vote_average={item.vote_average}
+								release_date={item.release_date}
+								first_air_date={item.first_air_date}
+							/>
+						))
+					) : (
+						<p>No movies found</p>
+					)}
+				</div>
+			</div>
+		</div>
+	);
 }

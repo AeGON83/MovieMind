@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import Loading from "./Loading";
+import Navbar from "./Navbar";
 
 export default function Player() {
   const { id } = useParams();
@@ -35,30 +36,37 @@ export default function Player() {
     }
   }, [id, s]);
 
-  // let url = `https://api.riptv.net/v2/embed/${type}?id=${id}${
-  // 	season ? "&season=" + season : ""
-  // }${episode ? "&episode=" + episode : ""}`;
-
-  let url = `https://vidsrc.me/embed/${type}?tmdb=${id}${
-    season ? `&season=${season}` : ""
-  }${episode ? `&episode=${episode}` : ""}`;
-  // console.log(url)
-
   return (
-    <Fragment>
-      {!loaded && <Loading />}
-
-      <div className="player">
-        {typeof type !== "undefined" && (
-          <iframe
-            allowFullScreen
-            sandbox="allow-same-origin allow-scripts allow-popups-to-escape-sandbox"
-            onLoad={() => setLoaded(true)}
-            src={url}
-            onError={(error) => console.log(error, "Failed to load iframe")}
-          ></iframe>
-        )}
-      </div>
-    </Fragment>
-  );
+		<>
+			<Navbar
+				navStyle={{
+					height: "60px",
+					// backgroundColor: "#01010177",
+					position: "relative",
+					top: 0,
+					opacity: 1,
+					zIndex: 2,
+				}}
+			/>
+			<div
+				style={{
+					position:"relative",
+					width: "100%",
+					height: "calc(100vh - 60px)",
+					overflow: "hidden",
+				}}
+			>
+				<iframe
+					onLoad={() => setLoaded(true)}
+					src={`https://vidsrc.me/embed/${type}?tmdb=${id}${
+						season ? `&season=${season}` : ""
+					}${episode ? `&episode=${episode}` : ""}`}
+					width='100%'
+					height='100%'
+					allowFullScreen
+					title='Embedded Movie'
+				></iframe>
+			</div>
+		</>
+	);
 }

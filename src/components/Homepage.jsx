@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
 import PosterSection from "./PosterSection";
 import CommunityPage from "./CommunityPage";
+import Footer from "./Footer";
 
 export default function () {
   const sections = [
@@ -31,6 +32,7 @@ export default function () {
           type={section.type}
         />
       ))}
+      <Footer/>
     </>
   );
 }
