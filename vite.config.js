@@ -17,7 +17,6 @@ export default defineConfig({
 			input: "./index.html", // replace this with your entry point if it's not 'src/index.html'
 		},
 	},
-
 	define: {
 		"process.env": {
 			REACT_APP_TMDB_API_KEY: process.env.REACT_APP_TMDB_API_KEY,
