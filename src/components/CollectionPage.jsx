@@ -75,7 +75,7 @@ export default function CollectionPage() {
 							/>
 						))
 					) : (
-						<p>No movies found</p>
+						<p>Loding...</p>
 					)}
 				</div>
 			</div>
