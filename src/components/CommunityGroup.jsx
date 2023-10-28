@@ -63,16 +63,16 @@ export default function CommunityGroup() {
     }
 
     try {
-      await fetch("http://localhost:5000/add-to-array", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...postMsgData,
-          time: formatDateAndTime(new Date()),
-        }),
-      });
+      await fetch("https://moviemind-server.onrender.com/add-to-array", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					...postMsgData,
+					time: formatDateAndTime(new Date()),
+				}),
+			});
       setPostMsgData((old) => {
         return { ...old, msg: "" };
       });
@@ -84,7 +84,7 @@ export default function CommunityGroup() {
 
   useEffect(() => {
     // Establish a WebSocket connection
-    const socket = new WebSocket(`ws://localhost:5000`);
+    const socket = new WebSocket(`ws://moviemind-server.onrender.com`);
 
     socket.onmessage = (event) => {
       const updatedData = JSON.parse(event.data);

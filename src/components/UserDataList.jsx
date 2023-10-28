@@ -25,18 +25,18 @@ export default function UserDataLists() {
       const fireBaseUid = currentUser.uid;
 
       axios
-        .get(`http://localhost:5000/get-user-data-list`, {
-          params: {
-            fireBaseUid,
-            dataType,
-          },
-        })
-        .then((response) => {
-          setDbList(response.data.arrayData);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+				.get(`https://moviemind-server.onrender.com/get-user-data-list`, {
+					params: {
+						fireBaseUid,
+						dataType,
+					},
+				})
+				.then((response) => {
+					setDbList(response.data.arrayData);
+				})
+				.catch((error) => {
+					console.error(error);
+				});
     }
   }, [dataType, currentUser]);
 

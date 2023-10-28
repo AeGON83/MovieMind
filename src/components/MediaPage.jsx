@@ -30,27 +30,28 @@ export default function MediaPage() {
       );
       return;
     }
+    
 
-    try {
-      let itemToAdd = { id, type };
-      let fireBaseUid = currentUser.uid;
-      const response = await axios.post(
-        "http://localhost:5000/add-to-favorites",
-        {
-          fireBaseUid,
-          itemToAdd,
-          isFavorite,
-        }
-      );
+		https: try {
+			let itemToAdd = { id, type };
+			let fireBaseUid = currentUser.uid;
+			const response = await axios.post(
+				"https://moviemind-server.onrender.com/add-to-favorites",
+				{
+					fireBaseUid,
+					itemToAdd,
+					isFavorite,
+				}
+			);
 
-      // Handle success
-      setIsFavorite((old) => {
-        return response.data.isAdded ? !old : old;
-      });
-    } catch (error) {
-      // Handle error
-      console.error(error);
-    }
+			// Handle success
+			setIsFavorite((old) => {
+				return response.data.isAdded ? !old : old;
+			});
+		} catch (error) {
+			// Handle error
+			console.error(error);
+		}
   };
   const handleBookmarkClick = async () => {
     if (!currentUser) {
@@ -63,7 +64,7 @@ export default function MediaPage() {
       let itemToAdd = { id, type };
       let fireBaseUid = currentUser.uid;
       const response = await axios.post(
-        "http://localhost:5000/add-to-watchlist",
+        "https://moviemind-server.onrender.com/add-to-watchlist",
         {
           fireBaseUid,
           itemToAdd,
@@ -90,7 +91,7 @@ export default function MediaPage() {
     try {
       let itemToAdd = { id, type, selectedRating: value };
       let fireBaseUid = currentUser.uid;
-      const response = await axios.post("http://localhost:5000/rate-media", {
+      const response = await axios.post("https://moviemind-server.onrender.com/rate-media", {
         fireBaseUid,
         itemToAdd,
       });
@@ -126,7 +127,7 @@ export default function MediaPage() {
     // search already saved data
     if (currentUser) {
       axios
-        .get("http://localhost:5000/search-media-data", {
+        .get("https://moviemind-server.onrender.com/search-media-data", {
           params: {
             fireBaseUid: currentUser.uid,
             id: id,

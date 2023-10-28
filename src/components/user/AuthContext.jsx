@@ -43,17 +43,17 @@ export function AuthProvider({ children }) {
           });
 
           axios
-            .post("http://localhost:5000/createUser", {
-              uid: user.uid,
-              name: user.displayName,
-              email: user.email,
-            })
-            .then((response) => {
-              console.log("Response:", response.data);
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
+						.post("https://moviemind-server.onrender.com/createUser", {
+							uid: user.uid,
+							name: user.displayName,
+							email: user.email,
+						})
+						.then((response) => {
+							console.log("Response:", response.data);
+						})
+						.catch((error) => {
+							console.error("Error:", error);
+						});
           return user;
         } catch (error) {
           // Handle the error when updating the user's profile
