@@ -9,10 +9,14 @@ dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	// build: {
-	// 	outDir: "build",
-	// },
-	// root: path.join(__dirname, "src"),
+	root: "./", // project root
+	base: "./", // base path for the project
+	build: {
+		outDir: "dist", // the output directory for the build
+		rollupOptions: {
+			input: "./index.html", // replace this with your entry point if it's not 'src/index.html'
+		},
+	},
 
 	define: {
 		"process.env": {
