@@ -84,7 +84,7 @@ export default function CommunityGroup() {
 
   useEffect(() => {
     // Establish a WebSocket connection
-    const socket = new WebSocket(`ws://moviemind-server.onrender.com`);
+    const socket = new WebSocket(`wss://moviemind-server.onrender.com`);
 
     socket.onmessage = (event) => {
       const updatedData = JSON.parse(event.data);
