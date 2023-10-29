@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect, Fragment } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams , Link} from "react-router-dom";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
 
@@ -38,34 +38,37 @@ export default function Player() {
 
   return (
 		<>
-			<Navbar
-				navStyle={{
-					height: "60px",
-					// backgroundColor: "#01010177",
-					position: "relative",
-					top: 0,
-					opacity: 1,
-					zIndex: 2,
-				}}
-			/>
-			<div
-				style={{
-					position:"relative",
-					width: "100%",
-					height: "calc(100vh - 60px)",
-					overflow: "hidden",
-				}}
-			>
-				<iframe
-					onLoad={() => setLoaded(true)}
-					src={`https://vidsrc.me/embed/${type}?tmdb=${id}${
-						season ? `&season=${season}` : ""
-					}${episode ? `&episode=${episode}` : ""}`}
-					width='100%'
-					height='100%'
-					allowFullScreen
-					title='Embedded Movie'
-				></iframe>
+			<div className='player'>
+				{typeof type !== "undefined" && (
+					<iframe
+						onLoad={() => setLoaded(true)}
+
+
+						src={`https://vidsrc.me/embed/${type}?tmdb=${id}${
+							season ? `&season=${season}` : ""
+						}${episode ? `&episode=${episode}` : ""}`}
+
+						// src={`https://api.riptv.net/v2/embed/${type}?id=${id}${
+						// 	season ? `&season=${season}` : ""
+						// }${episode ? `&episode=${episode}` : ""}`}
+
+
+						allowFullScreen
+						title='Embedded Movie'
+						></iframe>
+				)}
+
+				{loaded && (
+					<div className='overlay'>
+						<Link to='/'>
+							<i className='fa-solid fa-home'></i>
+						</Link>
+
+						<Link to={`/media/${type}/${id}`}>
+							<i className='fa-solid fa-close'></i>
+						</Link>
+					</div>
+				)}
 			</div>
 		</>
 	);
