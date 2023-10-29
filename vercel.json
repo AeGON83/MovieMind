@@ -4,7 +4,7 @@
 		"api": {
 			"maxDuration": 5,
 			"memory": 512,
-			"runtime": "@vercel/node"
+			"runtime": "now-node@1.0.0"
 		}
 	},
 	"routes": [
