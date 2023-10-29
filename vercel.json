@@ -1,16 +1,9 @@
 {
-	"version": 2,
-	"functions": {
-		
-	"routes": [
-		{
-			"src": "/(.*)",
-			"dest": "/"
-		},
-		{
-			"src": "/(.*)",
-			"dest": "/"
-		}
-	]
-}
-}
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  
