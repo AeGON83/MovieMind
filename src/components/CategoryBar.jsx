@@ -2,6 +2,7 @@ import React from "react";
 import CategoryBox from "./CategoryBox";
 import marvelVid from "../assets/catagory-vids/marvel.mp4";
 import disneyVid from "../assets/catagory-vids/disney.mp4";
+import starwarLogo from "../assets/catagory-imgs/viewers-starwars.png";
 import starwarVid from "../assets/catagory-vids/star-wars.mp4";
 import pixarVid from "../assets/catagory-vids/pixar.mp4";
 
@@ -25,7 +26,7 @@ export default function CategoryBar() {
     },
     {
       id: 10,
-      img: "src\\assets\\catagory-imgs\\viewers-starwars.png",
+      img: starwarLogo,
       vid: starwarVid,
     },
     {
