@@ -2,7 +2,7 @@
   "version": 2,
   "routes": [
     {
-      "src": "/assets/.*\\.js",
+      "src": "/.*\\.js",
       "headers": {
         "Content-Type": "application/javascript"
       },
