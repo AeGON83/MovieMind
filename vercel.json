@@ -1,19 +1,71 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/.*\\.js",
-      "headers": {
-        "Content-Type": "application/javascript"
-      },
-      "continue": true
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/index.html"
+		}
+	],
+
+	"routes": [
+		{
+			"src": "/",
+			"dest": "/"
+		},
+		{
+			"src": "/MovieSection",
+			"dest": "/"
+		},
+		{
+			"src": "/TvSection",
+			"dest": "/"
+		},
+		{
+			"src": "/DiscoverPage/:id",
+			"dest": "/"
+		},
+		{
+			"src": "/update-profile",
+			"dest": "/"
+		},
+		{
+			"src": "/signup",
+			"dest": "/"
+		},
+		{
+			"src": "/forgot-password",
+			"dest": "/"
+		},
+		{
+			"src": "/account",
+			"dest": "/"
+		},
+		{
+			"src": "/media/:type/:id",
+			"dest": "/"
+		},
+		{
+			"src": "/community",
+			"dest": "/"
+		},
+		{
+			"src": "/player/:id",
+			"dest": "/"
+		},
+		{
+			"src": "/AboutUs",
+			"dest": "/"
+		},
+		{
+			"src": "/Collection/:id",
+			"dest": "/"
+		},
+		{
+			"src": "/community/:communityName",
+			"dest": "/"
+		},
+		{
+			"src": "/user/:dataType",
+			"dest": "/"
+		}
+	]
 }
