@@ -1,5 +1,9 @@
 import React from "react";
 import CategoryBox from "./CategoryBox";
+import marvelVid from "../assets/catagory-vids/marvel.mp4";
+import disneyVid from "../assets/catagory-vids/disney.mp4";
+import starwarVid from "../assets/catagory-vids/star-wars.mp4";
+import pixarVid from "../assets/catagory-vids/pixar.mp4";
 
 export default function CategoryBar() {
   const categorySrcList = [
@@ -7,32 +11,32 @@ export default function CategoryBar() {
       id: 86311,
 
       img: "https://image.tmdb.org/t/p/original/cBpQgSEoFlmuGTCIoVKhq1Jy2tM.png",
-      vid: "src\\assets\\catagory-vids\\marvel.mp4",
+      vid: marvelVid,
     },
     {
       id: 645,
       img: "https://image.tmdb.org/t/p/original/h02wT4F1aPBkQ94NlSx3ypOI5xl.png",
-      vid: "src\\assets\\catagory-vids\\disney.mp4",
+      vid: pixarVid,
     },
     {
       id: 1241,
       img: "https://image.tmdb.org/t/p/original/jIR5aWOBsjPVoCwDMQcrY4iaxcd.png",
-      vid: "src\\assets\\catagory-vids\\pixar.mp4",
+      vid: disneyVid,
     },
     {
       id: 10,
       img: "src\\assets\\catagory-imgs\\viewers-starwars.png",
-      vid: "src\\assets\\catagory-vids\\star-wars.mp4",
+      vid: starwarVid,
     },
     {
       id: 9485,
       img: "https://image.tmdb.org/t/p/original/jCbjdbiG1BtiX4aqhvgf6YdXuIq.png",
-      vid: "src\\assets\\catagory-vids\\disney.mp4",
+      vid: pixarVid,
     },
     {
       id: 87359,
       img: "https://image.tmdb.org/t/p/original/tRwySKvciecGLk7C3A7e3WmF1dU.png",
-      vid: "src\\assets\\catagory-vids\\pixar.mp4",
+      vid: starwarVid,
     },
   ];
 
