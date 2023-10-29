@@ -34,15 +34,15 @@ dotenv.config();
 export default defineConfig({
 	plugins: [react()],
 	base: "./",
-	build: {
-		outDir: "dist",
-		assetsDir: "",
-		rollupOptions: {
-			input: {
-				main: path.resolve(__dirname, "index.html"), // Use path.resolve to get the correct file path
-			},
-		},
-	},
+	// build: {
+	// 	outDir: "dist",
+	// 	assetsDir: "",
+	// 	rollupOptions: {
+	// 		input: {
+	// 			main: path.resolve(__dirname, "index.html"), // Use path.resolve to get the correct file path
+	// 		},
+	// 	},
+	// },
 	server: {
 		fs: {
 			allow: [".", ".."], // Allow serving files outside of the default directories
