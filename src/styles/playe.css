@@ -3,8 +3,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh ;
   z-index: 11;
+  overflow: hidden;
+  
 }
 
 .player iframe {
@@ -20,16 +22,18 @@
   position: absolute;
   top: 30px;
   right: 30px;
-  z-index: 12;
+  z-index: 12 !important;
   cursor: pointer;
 }
 
-.player .overlay a {
+.player .overlay i {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 10px;
   font-size: 20px;
+  color: red;
+
 }
 
 .player .overlay a .fa-close {
@@ -42,4 +46,17 @@
 
 .player .overlay a:last-child {
   margin-right: 0;
+}
+
+/* Media Query for screens with a maximum width of 600px */
+@media screen and (max-width: 600px) {
+  .player .overlay a i {
+    font-size: 16px;
+    margin: 0 5px;
+    vertical-align: middle;
+  }
+  
+  .player .overlay a i.fa-xmark {
+    font-size: 18px;
+  }
 }

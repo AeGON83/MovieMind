@@ -85,7 +85,6 @@ export default function MovieCard(props) {
 							}}
 							
 							to={`/player/${id}`}
-							target='_blank'
 						>
 							WATCH
 						</Link>

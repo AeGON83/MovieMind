@@ -337,7 +337,6 @@ export default function MediaPage() {
 								<Link
 									// to={`https://vidsrc.me/embed/${type}?tmdb=${id}`}
 									to={`/player/${id}`}
-									target='_blank'
 									className='normal-button media-page-play-btn'
 								>
 									<img
