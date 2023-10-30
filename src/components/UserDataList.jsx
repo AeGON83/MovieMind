@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import Navbar from "./Navbar";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import { useAuth } from "./user/AuthContext";
 
 export default function UserDataLists() {
+  const navigate = useNavigate()
   const { dataType } = useParams();
   const { currentUser } = useAuth();
 
@@ -85,58 +86,58 @@ export default function UserDataLists() {
   }
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      <Navbar />
-      {currentUser ? (
-        <div>
-          <div className="list-titele">
-            <h1 style={{ marginLeft: "4%" }}>{dataType}</h1>
-          </div>
-          <div
-            className="movies-slides"
-            style={{
-              position: "relative",
-              justifyContent: "center",
-              width: "100%",
-              height: "fit-content",
-              backgroundColor: "transparent",
-              top: "calc(100% - 275px)",
-              rowGap: "20px",
-              overflow: "hidden",
-            }}
-          >
-            {renderMovieCards()}
-          </div>
-        </div>
-      ) : (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            gap: "30px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <p style={{ fontSize: "30px", letterSpacing: "2px" }}>
-            Please log in to add to {dataType}
-          </p>
-          <button
-            className="normal-button"
-            style={{
-              width: "150px",
-              height: "60px",
-              background: "brown",
-              fontSize: "20px",
-            }}
-            onClick={() => navigate("/signup")}
-          >
-            Log In
-          </button>
-        </div>
-      )}
-    </div>
-  );
+		<div style={{ overflow: "hidden" }}>
+			<Navbar />
+			{currentUser ? (
+				<div>
+					<div className='list-titele'>
+						<h1 style={{ marginLeft: "4%" }}>{dataType}</h1>
+					</div>
+					<div
+						className='movies-slides'
+						style={{
+							position: "relative",
+							justifyContent: "center",
+							width: "100%",
+							height: "fit-content",
+							backgroundColor: "transparent",
+							top: "calc(100% - 275px)",
+							rowGap: "20px",
+							overflow: "hidden",
+						}}
+					>
+						{renderMovieCards()}
+					</div>
+				</div>
+			) : (
+				<div
+					style={{
+						width: "100%",
+						height: "100vh",
+						display: "flex",
+						flexDirection: "column",
+						gap: "30px",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
+					<p style={{ fontSize: "30px", letterSpacing: "2px" }}>
+						Please log in to add to {dataType}
+					</p>
+					<button
+						className='normal-button'
+						style={{
+							width: "150px",
+							height: "60px",
+							background: "brown",
+							fontSize: "20px",
+						}}
+						onClick={() => navigate("/signup")}
+					>
+						Log In
+					</button>
+				</div>
+			)}
+		</div>
+	);
 }
