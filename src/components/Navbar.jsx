@@ -7,15 +7,38 @@ import { useAuth } from './user/AuthContext';
 
 export default function Navbar({ navStyle }) {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const { currentUser } = useAuth();
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navigateToHomepage = () => {
     navigate('/');
+    setIsMenuOpen(false); // Close mobile menu when navigating
   };
 
-  let { currentUser } = useAuth();
+  const handleNavigation = (path) => {
+    navigate(path);
+    setIsMenuOpen(false); // Close mobile menu when navigating
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div
-      className='navbar-container'
+      className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}
       style={navStyle}
     >
       <div className='navbar-wrapper'>
@@ -27,14 +50,44 @@ export default function Navbar({ navStyle }) {
           <p onClick={navigateToHomepage}>MovieMind</p>
         </div>
 
-        <ul className='navbar-items'>
-          <li onClick={() => navigate('/community')}>Community</li>
-          <li onClick={() => navigate('/MovieSection')}>Moveis</li>
-          <li onClick={() => navigate('/TvSection')}>Web Series</li>
-          <li onClick={() => navigate('/DiscoverPage/28')}>Discover</li>
-          <li onClick={() => navigate('/user/favorites')}>Favorites</li>
-          <li onClick={() => navigate('/user/watchList')}>Watchlist</li>
+        {/* Burger Menu Button */}
+        <div
+          className='burger-menu'
+          onClick={toggleMenu}
+        >
+          <div className={`burger-line ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`burger-line ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`burger-line ${isMenuOpen ? 'open' : ''}`}></div>
+        </div>
+
+        <ul className={`navbar-items ${isMenuOpen ? 'open' : ''}`}>
+          <li onClick={() => handleNavigation('/community')}>Community</li>
+          <li onClick={() => handleNavigation('/MovieSection')}>Movies</li>
+          <li onClick={() => handleNavigation('/TvSection')}>Web Series</li>
+          <li onClick={() => handleNavigation('/DiscoverPage/28')}>Discover</li>
+          <li onClick={() => handleNavigation('/user/favorites')}>Favorites</li>
+          <li onClick={() => handleNavigation('/user/watchList')}>Watchlist</li>
+
+          {/* Mobile Account Button */}
+          <li className='mobile-account-button'>
+            {currentUser ? (
+              <Link
+                to='/account'
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Account
+              </Link>
+            ) : (
+              <Link
+                to='/signup'
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+            )}
+          </li>
         </ul>
+
         <div className='navbar-buttons-wrapper'>
           <button
             className='normal-button'

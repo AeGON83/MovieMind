@@ -183,6 +183,11 @@
 	text-decoration: none;
 }
 
+/* Mobile Account Button - Hidden by default */
+.mobile-account-button {
+	display: none;
+}
+
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
 	.navbar-container {
@@ -320,8 +325,4 @@
 .navbar-items.open > li:nth-child(4) { animation-delay: 0.4s; }
 .navbar-items.open > li:nth-child(5) { animation-delay: 0.5s; }
 .navbar-items.open > li:nth-child(6) { animation-delay: 0.6s; }
-
-/* Mobile Account Button - Hidden by default */
-.mobile-account-button {
-	display: none;
-}
+.navbar-items.open > li:nth-child(7) { animation-delay: 0.7s; }

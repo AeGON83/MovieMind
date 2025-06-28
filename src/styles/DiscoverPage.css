@@ -1,137 +1,443 @@
 /** @format */
 
+/* Root Variables for Consistent Theming */
+:root {
+  --primary-bg: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #000051 100%);
+  --secondary-bg: rgba(255, 255, 255, 0.05);
+  --accent-color: #8b5cf6;
+  --accent-secondary: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #a78bfa;
+  --border-color: rgba(139, 92, 246, 0.3);
+  --shadow-primary: rgba(139, 92, 246, 0.25);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main Container */
 .discover-section {
-	display: flex;
-	width: 100%;
-	height: calc(100vh - 60px);
-	overflow: hidden;
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background: var(--primary-bg);
+  position: relative;
+  overflow: hidden;
 }
 
+.discover-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Filters Sidebar */
 .filters-slide {
-	display: flex;
-	height: 100%;
-
-	align-items: center;
-	width: 25%;
-	border-right: 1px solid red;
-	box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-		rgb(0 0 0/73%) 0px 16px 10px -10px;
-	border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 320px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 20px 0 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  transition: var(--transition-smooth);
 }
 
-.movies-slides {
-	height: 100%;
+.filters-slide:hover {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 25px 0 50px rgba(139, 92, 246, 0.2);
+}
 
-	margin: 20px;
-	padding-top: 14px;
-	padding-bottom: 50px !important;
-	display: flex;
-	row-gap: 30px;
-	column-gap: 0;
-	overflow: scroll;
-	width: 75%;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	background-color: rgb(24, 6, 76);
-	border-radius: 10px;
+.filters-containar {
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+}
+
+.filters-containar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filters-containar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filters-containar::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.filter-containar-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.filter-list-category-title {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filter-list-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  opacity: 0;
+  transition: var(--transition-smooth);
+  z-index: -1;
+}
+
+.filter-list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px var(--shadow-primary);
+  border-color: var(--accent-color);
+}
+
+.filter-list-item:hover::before {
+  opacity: 0.1;
+}
+
+/* Labels and Text */
+.filter-list-item label {
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.filter-input-lable {
+  font-size: 1rem;
+  margin-bottom: 0.75rem !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Switch Styling */
+.search-bar-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.search-bar-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #374151;
+  transition: var(--transition-smooth);
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background: white;
+  transition: var(--transition-smooth);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .slider {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* Select Dropdown Styling */
+select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 3rem;
+}
+
+select:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+option {
+  background: #1f2937;
+  color: var(--text-primary);
+  padding: 12px;
+}
+
+/* Number Input Styling */
+input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition-smooth);
+  -moz-appearance: textfield;
+}
+
+input[type="number"]:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+input[type="number"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Radio Button Styling */
+.filter-sortby-label {
+  display: flex !important;
+  align-items: center;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  flex: 1;
+}
+
+.filter-sortby-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.filter-sortby-label span {
+  flex: 1;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.filter-list-item:hover .filter-sortby-label span {
+  color: var(--text-secondary);
+}
+
+/* Direction Arrow Styling */
+.desc-arrow {
+  --color: var(--text-secondary);
+  --size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  color: var(--color);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+.desc-arrow:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.desc-arrow input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.desc-arrow input:checked ~ .chevron-down {
+  animation: rotate-arrow 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
+
+/* Movies Grid */
+.movies-slides {
+  flex: 1;
+  margin: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  z-index: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
 }
 
 .movies-slides::-webkit-scrollbar {
-	display: none;
+  width: 8px;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-	scale: 1.5;
-	margin: 0;
-	margin-right: 10px;
+.movies-slides::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* Create custom up and down arrows */
-input[type="number"] {
-	-moz-appearance: textfield; /* Firefox */
+.movies-slides::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
 }
 
-input[type="number"]::-webkit-inner-spin-button::before {
-	content: "\25B2"; /* Unicode character for up arrow */
-	padding-right: 5px; /* Adjust spacing as needed */
+.movies-slides::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
 }
 
-input[type="number"]::-webkit-inner-spin-button::after {
-	content: "\25BC"; /* Unicode character for down arrow */
-	padding-left: 5px; /* Adjust spacing as needed */
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
-/* Basic styling for the select dropdown */
-select {
-	width: 150px; /* Set the width of the dropdown */
-	padding: 5px; /* Add some padding for better readability and click area */
-	border: 1px solid #ccc; /* Add a border for a distinct look */
-	border-radius: 5px; /* Optional: Rounded corners */
-	font-size: 16px; /* Set the font size */
-	background-color: #fff; /* Set the background color */
-	color: #333; /* Set the text color */
+.loading {
+  animation: pulse 2s infinite;
 }
 
-/* Style the dropdown arrow */
-select::-ms-expand {
-	display: none; /* Remove the default arrow in Internet Explorer */
+/* Animations */
+@keyframes rotate-arrow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(180deg); }
 }
 
-/* Optional: Style the dropdown arrow for other browsers */
-select::after {
-	content: "\25BC"; /* Unicode character for a down arrow */
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	transform: translateY(-50%);
-	pointer-events: none; /* Ensure the arrow doesn't interfere with clicking the dropdown */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Basic styling for the options inside the dropdown */
-option {
-	background-color: #fff; /* Set the background color of each option */
-	color: #333; /* Set the text color of each option */
-	padding: 10px; /* Add padding for better readability and click area */
+.filter-list-item {
+  animation: fadeIn 0.5s ease-out;
 }
 
-/* Style the selected option */
-option:checked {
-	background-color: #007bff; /* Set a different background color for the selected option */
-	color: #fff; /* Set a different text color for the selected option */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .discover-section {
+    flex-direction: column;
+  }
+
+  .filters-slide {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .movies-slides {
+    margin: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
-/*------ Settings ------*/
-.desc-arrow {
-	--color: #a5a5b0;
-	--size: 30px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	cursor: pointer;
-	font-size: var(--size);
-	user-select: none;
-	fill: var(--color);
-	z-index: 100;
+@media (max-width: 768px) {
+  .filters-containar {
+    padding: 1rem;
+  }
+
+  .filter-containar-title {
+    font-size: 1.5rem;
+  }
+
+  .movies-slides {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 
-.desc-arrow .chevron-down {
-	position: absolute;
-	animation: keyframes-return 0.5s;
-}
+@media (max-width: 480px) {
+  .movies-slides {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin: 0.5rem;
+  }
 
-/* ------ On check event ------ */
-.desc-arrow input:clied ~ .chevron-down {
-	animation: keyframes-rotate 0.5s;
-	transform: rotate(180deg);
-}
-
-/* ------ Hide the default checkbox ------ */
-.desc-arrow input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
+  .filters-slide {
+    max-height: 250px;
+  }
 }
