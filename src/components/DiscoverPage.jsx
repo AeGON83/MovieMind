@@ -1,12 +1,12 @@
 /** @format */
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import MovieCard from "./MovieCard";
-import Navbar from "./Navbar";
-const type = "movie";
+import MovieCard from './MovieCard';
+import Navbar from './Navbar';
+const type = 'movie';
 
 export default function DiscoverPage() {
   const { id: genreId } = useParams();
@@ -21,7 +21,7 @@ export default function DiscoverPage() {
     checkboprimary_release_date_asc: false,
   });
 
-  const [newSortbyUrl, setNewSortbyUrl] = useState("");
+  const [newSortbyUrl, setNewSortbyUrl] = useState('');
   const handleCheckboxChange = (checkboxName) => {
     setCheckboxes((prevCheckboxes) => {
       const updatedCheckboxes = {
@@ -44,28 +44,28 @@ export default function DiscoverPage() {
       };
 
       updatedCheckboxes[checkboxName] = true;
-      let sortOption = "";
+      let sortOption = '';
 
       if (updatedCheckboxes.revenue_asc) {
-        sortOption = "&sort_by=revenue.asc";
+        sortOption = '&sort_by=revenue.asc';
       } else if (updatedCheckboxes.popularity_asc) {
-        sortOption = "&sort_by=popularity.asc";
+        sortOption = '&sort_by=popularity.asc';
       } else if (updatedCheckboxes.vote_count_asc) {
-        sortOption = "&sort_by=vote_count.asc";
+        sortOption = '&sort_by=vote_count.asc';
       } else if (updatedCheckboxes.vote_average_asc) {
-        sortOption = "&sort_by=vote_average.asc";
+        sortOption = '&sort_by=vote_average.asc';
       } else if (updatedCheckboxes.primary_release_date_asc) {
-        sortOption = "&sort_by=primary_release_date.asc";
+        sortOption = '&sort_by=primary_release_date.asc';
       } else if (updatedCheckboxes.revenue_desc) {
-        sortOption = "&sort_by=revenue.desc";
+        sortOption = '&sort_by=revenue.desc';
       } else if (updatedCheckboxes.popularity_decs) {
-        sortOption = "&sort_by=popularity.desc";
+        sortOption = '&sort_by=popularity.desc';
       } else if (updatedCheckboxes.vote_count_desc) {
-        sortOption = "&sort_by=vote_count.desc";
+        sortOption = '&sort_by=vote_count.desc';
       } else if (updatedCheckboxes.vote_average_desc) {
-        sortOption = "&sort_by=vote_average.desc";
+        sortOption = '&sort_by=vote_average.desc';
       } else if (updatedCheckboxes.primary_release_date_desc) {
-        sortOption = "&sort_by=primary_release_date.desc";
+        sortOption = '&sort_by=primary_release_date.desc';
       }
       setNewSortbyUrl(sortOption);
       // console.log("Updated Checkboxes:", updatedCheckboxes, sortOption);
@@ -81,79 +81,79 @@ export default function DiscoverPage() {
   const options = [
     {
       id: 28,
-      name: "Action",
+      name: 'Action',
     },
     {
       id: 12,
-      name: "Adventure",
+      name: 'Adventure',
     },
     {
       id: 16,
-      name: "Animation",
+      name: 'Animation',
     },
     {
       id: 35,
-      name: "Comedy",
+      name: 'Comedy',
     },
     {
       id: 80,
-      name: "Crime",
+      name: 'Crime',
     },
     {
       id: 99,
-      name: "Documentary",
+      name: 'Documentary',
     },
     {
       id: 18,
-      name: "Drama",
+      name: 'Drama',
     },
     {
       id: 10751,
-      name: "Family",
+      name: 'Family',
     },
     {
       id: 14,
-      name: "Fantasy",
+      name: 'Fantasy',
     },
     {
       id: 36,
-      name: "History",
+      name: 'History',
     },
     {
       id: 27,
-      name: "Horror",
+      name: 'Horror',
     },
     {
       id: 10402,
-      name: "Music",
+      name: 'Music',
     },
     {
       id: 9648,
-      name: "Mystery",
+      name: 'Mystery',
     },
     {
       id: 10749,
-      name: "Romance",
+      name: 'Romance',
     },
     {
       id: 878,
-      name: "Science Fiction",
+      name: 'Science Fiction',
     },
     {
       id: 10770,
-      name: "TV Movie",
+      name: 'TV Movie',
     },
     {
       id: 53,
-      name: "Thriller",
+      name: 'Thriller',
     },
     {
       id: 10752,
-      name: "War",
+      name: 'War',
     },
     {
       id: 37,
-      name: "Western",
+      name: 'Western',
     },
   ];
   const [selectedOption, setSelectedOption] = useState(() => {
@@ -172,14 +172,14 @@ export default function DiscoverPage() {
 
   useEffect(() => {
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?${
-      checkboxes.include_adult ? "include_adult=true" : "include_adult=false"
+      checkboxes.include_adult ? 'include_adult=true' : 'include_adult=false'
     }&include_video=false&language=en-US&page=1${newSortbyUrl}${yearUrl}${genreUrl}`;
     console.log(apiUrl);
 
     const apiReqOptions = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        accept: "application/json",
+        accept: 'application/json',
         Authorization: process.env.REACT_APP_TMDB_API_KEY,
       },
     };
@@ -196,30 +196,33 @@ export default function DiscoverPage() {
   return (
     <div>
       <Navbar />
-      <div className="discover-section">
-        <div className="filters-slide">
-          <div className="filters-containar">
-            <h2 className="filter-containar-title">Filters</h2>
-            <ul className="filter-list">
-              <h3 className="filter-list-category-title">Category</h3>
-              <li className="filter-list-item">
-                <label htmlFor="checkbox1">Include Adult</label>
-                <label className="search-bar-switch">
+      <div className='discover-section'>
+        <div className='filters-slide'>
+          <div className='filters-containar'>
+            <h2 className='filter-containar-title'>Filters</h2>
+            <ul className='filter-list'>
+              <h3 className='filter-list-category-title'>Category</h3>
+              <li className='filter-list-item'>
+                <label htmlFor='checkbox1'>Include Adult</label>
+                <label className='search-bar-switch'>
                   <input
-                    type="checkbox"
-                    name="checkbox4444"
-                    value="include_adult"
+                    type='checkbox'
+                    name='checkbox4444'
+                    value='include_adult'
                     checked={checkboxes.include_adult}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
-                  <span className="slider round"></span>
+                  <span className='slider round'></span>
                 </label>
               </li>
             </ul>
 
-            <ul className="filter-list">
-              <li className="filter-list-item">
-                <label htmlFor="" className="filter-input-lable">
+            <ul className='filter-list'>
+              <li className='filter-list-item'>
+                <label
+                  htmlFor=''
+                  className='filter-input-lable'
+                >
                   Genre
                 </label>
                 <select
@@ -227,89 +230,95 @@ export default function DiscoverPage() {
                   onChange={handleOptionChange}
                 >
                   {options.map((name, id) => (
-                    <option key={id} value={name.name}>
+                    <option
+                      key={id}
+                      value={name.name}
+                    >
                       {name.name}
                     </option>
                   ))}
                 </select>
               </li>
-              <li className="filter-list-item">
-                <label htmlFor="" className="filter-input-lable">
+              <li className='filter-list-item'>
+                <label
+                  htmlFor=''
+                  className='filter-input-lable'
+                >
                   Year
                 </label>
                 <input
-                  type="number"
+                  type='number'
                   min={1990}
                   max={2024}
-                  className="filter-input-input"
-                  placeholder="2022"
+                  className='filter-input-input'
+                  placeholder='2022'
                   onChange={(e) => handleYearChange(e.target.value)}
                 ></input>
               </li>
             </ul>
 
-            <ul className="filter-list">
-              <h3 className="filter-list-category-title">sort_by</h3>
-              <li className="filter-list-item">
-                <label className="filter-sortby-label">
+            <ul className='filter-list'>
+              <h3 className='filter-list-category-title'>sort_by</h3>
+              <li className='filter-list-item'>
+                <label className='filter-sortby-label'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="revenue_asc"
+                    type='radio'
+                    name='radio'
+                    value='revenue_asc'
                     checked={checkboxes.checkbox1}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   <span>Revenue</span>
                 </label>
-                <label className="desc-arrow">
+                <label className='desc-arrow'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="revenue_desc"
+                    type='radio'
+                    name='radio'
+                    value='revenue_desc'
                     checked={checkboxes.checkbox11}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   ↓
                 </label>
               </li>
-              <li className="filter-list-item">
-                <label className="filter-sortby-label">
+              <li className='filter-list-item'>
+                <label className='filter-sortby-label'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="popularity_asc"
+                    type='radio'
+                    name='radio'
+                    value='popularity_asc'
                     checked={checkboxes.checkbox2}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   <span>Popularity</span>
                 </label>
-                <label className="desc-arrow">
+                <label className='desc-arrow'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="popularity_asc"
+                    type='radio'
+                    name='radio'
+                    value='popularity_asc'
                     checked={checkboxes.checkbox22}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   ↓
                 </label>
               </li>
-              <li className="filter-list-item">
-                <label className="filter-sortby-label">
+              <li className='filter-list-item'>
+                <label className='filter-sortby-label'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="vote_count_asc"
+                    type='radio'
+                    name='radio'
+                    value='vote_count_asc'
                     checked={checkboxes.checkbox3}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   <span>Vote Count</span>
                 </label>
-                <label className="desc-arrow">
+                <label className='desc-arrow'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="vote_count_desc"
+                    type='radio'
+                    name='radio'
+                    value='vote_count_desc'
                     checked={checkboxes.checkbox33}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
@@ -317,22 +326,22 @@ export default function DiscoverPage() {
                 </label>
               </li>
 
-              <li className="filter-list-item">
-                <label className="filter-sortby-label">
+              <li className='filter-list-item'>
+                <label className='filter-sortby-label'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="vote_average_asc"
+                    type='radio'
+                    name='radio'
+                    value='vote_average_asc'
                     checked={checkboxes.checkbox4}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   <span>Vote Average</span>
                 </label>
-                <label className="desc-arrow">
+                <label className='desc-arrow'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="vote_average_desc"
+                    type='radio'
+                    name='radio'
+                    value='vote_average_desc'
                     checked={checkboxes.checkbox44}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
@@ -340,22 +349,22 @@ export default function DiscoverPage() {
                 </label>
               </li>
 
-              <li className="filter-list-item">
-                <label className="filter-sortby-label">
+              <li className='filter-list-item'>
+                <label className='filter-sortby-label'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="primary_release_date_asc"
+                    type='radio'
+                    name='radio'
+                    value='primary_release_date_asc'
                     checked={checkboxes.checkbox5}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
                   <span>Primary Release Date</span>
                 </label>
-                <label className="desc-arrow">
+                <label className='desc-arrow'>
                   <input
-                    type="radio"
-                    name="radio"
-                    value="primary_release_date_desc"
+                    type='radio'
+                    name='radio'
+                    value='primary_release_date_desc'
                     checked={checkboxes.checkbox55}
                     onChange={(e) => handleCheckboxChange(e.target.value)}
                   />
@@ -365,7 +374,7 @@ export default function DiscoverPage() {
             </ul>
           </div>
         </div>
-        <div className="movies-slides">
+        <div className='movies-slides'>
           {discoverDataList.results ? (
             discoverDataList.results.map((item) => (
               <MovieCard

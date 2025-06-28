@@ -1,53 +1,64 @@
-import React from 'react'
-import Navbar from './Navbar'
-import { Link} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
+
+const TEAM_MEMBERS = [
+  {
+    name: 'Rajan Makavana',
+    portfolioUrl: '#', // Add portfolio URL when available
+    imageOffset: '50px',
+  },
+  {
+    name: 'Bharat Ladva',
+    portfolioUrl: 'https://bharatladva.github.io/cv/',
+    imageOffset: '45px',
+  },
+];
 
 export default function AboutUs() {
-	return (
-		<div className='signin-page-container'>
-			<Navbar
-				navStyle={{
-					height: "60px",
-					// backgroundColor: "#01010177",
-					position: "relative",
-					top: 0,
-					opacity: 1,
-					zIndex: 2,
-				}}
-			/>
-			<div className='abaut-main'>
-				<div className='abaut-profiles'>
-					<div className='profile'>
-						<div
-							className='userimage'
-							style={{
-								position: "relative",
-								top: "0",
-								left: "50px",
-								scale: "1.5",
-							}}
-						></div>
-						<h1>Rajan Makavana</h1>
-						<h2>Portfolio</h2>
-					</div>
-					<div className='profile'>
-						<div
-							className='userimage'
-							style={{
-								position: "relative",
-								top: "0",
-								left: "45px",
-								scale: "1.5",
-							}}
-						></div>
-						<h1>Bharat Ladva</h1>
-						<Link to={"https://bharatladva.github.io/cv/"}>
-							<h2>Portfolio</h2>
-						</Link>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className='signin-page-container'>
+      <Navbar
+        navStyle={{
+          height: '60px',
+          position: 'relative',
+          top: 0,
+          opacity: 1,
+          zIndex: 2,
+        }}
+      />
+      <main className='about-main'>
+        <section className='about-profiles'>
+          {TEAM_MEMBERS.map(({ name, portfolioUrl, imageOffset }) => (
+            <article
+              key={name}
+              className='profile'
+            >
+              <div
+                className='userimage'
+                style={{
+                  position: 'relative',
+                  top: '0',
+                  left: imageOffset,
+                  transform: 'scale(1.5)',
+                }}
+                aria-label={`${name}'s profile picture`}
+              />
+              <h2>{name}</h2>
+              {portfolioUrl && (
+                <Link
+                  to={portfolioUrl}
+                  className='portfolio-link'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Portfolio
+                </Link>
+              )}
+            </article>
+          ))}
+        </section>
+      </main>
+    </div>
+  );
 }
-
